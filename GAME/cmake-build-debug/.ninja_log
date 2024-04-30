@@ -1,0 +1,11 @@
+# ninja log v5
+1	1350	7361493618787562	CMakeFiles/New_folder.dir/src/Game.cpp.obj	717557dddc6edc9e
+85	2067	7361493625948697	CMakeFiles/New_folder.dir/src/AI.cpp.obj	8f3c6073af638c88
+5	1272	7361495968483150	CMakeFiles/New_folder.dir/src/Player.cpp.obj	c22577fa70392871
+180	2423	7361493629519272	CMakeFiles/New_folder.dir/src/GameManager.cpp.obj	b77d2141434da495
+1273	3000	7361495985671024	New_folder.exe	85244629694ea4e5
+9	2092	7361503235923422	CMakeFiles/New_folder.dir/src/AI.cpp.obj	92328bc79f47e5a7
+202	2472	7361503239743362	CMakeFiles/New_folder.dir/src/Game.cpp.obj	ecbaa911f66525ff
+332	3226	7361503247260215	CMakeFiles/New_folder.dir/src/GameManager.cpp.obj	48e6a1b222dbef10
+471	3739	7361503252435557	CMakeFiles/New_folder.dir/src/Player.cpp.obj	648780845cb4560c
+3739	5250	7361503267455765	New_folder.exe	85244629694ea4e5
