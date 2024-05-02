@@ -21,7 +21,7 @@ class randomPlayer: public Player {
     int makeMove(const vector<char>& board); 
 
 };
-////////////////////////////////////////////////
+//////////////////////////////////////////////////
 class mediumplayer: public Player {
 private:
     char playerSymbol;
@@ -31,7 +31,7 @@ public:
     int makeMove(const vector<char>& board);
 
 };
-/////////////////////////////////////////////////
+///////////////////////////////////////////////////
 class AIPlayer : public Player {
 private:
     char playerSymbol;

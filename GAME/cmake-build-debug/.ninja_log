@@ -38,3 +38,8 @@
 1121	2113	7363241060001596	New_folder.exe	85244629694ea4e5
 6	1166	7363242145264112	CMakeFiles/New_folder.dir/src/Player.cpp.obj	648780845cb4560c
 1167	2130	7363242154817874	New_folder.exe	85244629694ea4e5
+7	2279	7363244849053105	CMakeFiles/New_folder.dir/src/Game.cpp.obj	ecbaa911f66525ff
+226	3023	7363244856494158	CMakeFiles/New_folder.dir/src/AI.cpp.obj	92328bc79f47e5a7
+368	3487	7363244861142404	CMakeFiles/New_folder.dir/src/GameManager.cpp.obj	48e6a1b222dbef10
+576	3715	7363244863426621	CMakeFiles/New_folder.dir/src/Player.cpp.obj	648780845cb4560c
+3716	4681	7363244873010490	New_folder.exe	85244629694ea4e5
