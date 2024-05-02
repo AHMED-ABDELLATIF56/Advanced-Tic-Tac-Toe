@@ -5,7 +5,6 @@
 #include"CLASSES.hpp"
 
 
-
     vector<char> board;
     char currentPlayer;
     char opponent;

@@ -8,7 +8,6 @@ using namespace std;
 int main() {
       int choice;
     
-
      cout << "Welcome to X-O Game. :)\n";
     cout << "Select the game mode:\n";
     cout << "1. Play against another player\n";
