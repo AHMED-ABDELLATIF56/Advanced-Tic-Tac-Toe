@@ -24,6 +24,12 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         dialog.h dialog.cpp dialog.ui
+        login.h login.cpp login.ui
+        twoplayer.h twoplayer.cpp twoplayer.ui
+        ai.h ai.cpp ai.ui
+        board1.h board1.cpp board1.ui
+
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET untitled4 APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
