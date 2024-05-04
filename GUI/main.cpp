@@ -1,5 +1,6 @@
 #include "mainwindow.h"
-
+#include "twoplayer.h"
+#include "login.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

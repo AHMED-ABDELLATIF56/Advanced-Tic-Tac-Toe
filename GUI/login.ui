@@ -79,7 +79,7 @@
     <item>
      <widget class="QPushButton" name="pushButton_two_player">
       <property name="text">
-       <string>PushButton</string>
+       <string>click</string>
       </property>
      </widget>
     </item>
