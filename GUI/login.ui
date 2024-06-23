@@ -44,13 +44,6 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_AI_medium">
-      <property name="text">
-       <string>medium</string>
-      </property>
-     </widget>
-    </item>
-    <item>
      <widget class="QPushButton" name="pushButton_AI_hard">
       <property name="text">
        <string>hard</string>

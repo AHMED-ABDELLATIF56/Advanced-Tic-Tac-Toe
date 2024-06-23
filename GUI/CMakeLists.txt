@@ -23,17 +23,30 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(untitled4
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        dialog.h dialog.cpp dialog.ui
-<<<<<<< Updated upstream
+
         login.h login.cpp login.ui
         twoplayer.h twoplayer.cpp twoplayer.ui
+        dialog.h dialog.cpp dialog.ui
+
+
+        xoplayer.h xoplayer.cpp xoplayer.ui
+
+        medium.h medium.cpp medium.ui
+
+
+        gameboard.h gameboard.cpp gameboard.ui
+        aihard.h aihard.cpp aihard.ui
+        hard1.h hard1.cpp hard1.ui
 
 
 
 
 
-=======
->>>>>>> Stashed changes
+
+
+
+
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET untitled4 APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
