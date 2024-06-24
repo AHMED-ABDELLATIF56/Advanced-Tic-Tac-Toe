@@ -1,4 +1,4 @@
-#ifndef DIALOG2_H
+/*#ifndef DIALOG2_H
 #define DIALOG2_H
 
 #include <QDialog>
@@ -20,3 +20,4 @@ private:
 };
 
 #endif // DIALOG2_H
+*/

@@ -3,9 +3,9 @@
 
 #include <QDialog>
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class twoplayer; }
-QT_END_NAMESPACE
+namespace Ui {
+class twoplayer;
+}
 
 class twoplayer : public QDialog
 {
@@ -25,15 +25,16 @@ private slots:
     void on_pushButton_7_clicked();
     void on_pushButton_8_clicked();
     void on_pushButton_9_clicked();
-
-private:
-    Ui::twoplayer *ui;
-    bool playerX; // Declaration of playerX as a member variable
     void handleButtonClick(QPushButton *button);
     void checkWinCondition();
     void resetGame();
+
+private:
+    Ui::twoplayer *ui;
+    bool playerX;
+
+    void disconnectButtons();
+    void connectButtons();
 };
 
 #endif // TWOPLAYER_H
-
-

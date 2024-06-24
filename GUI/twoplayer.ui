@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>GroupBox</string>
+    <string>Two_player</string>
    </property>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">

@@ -11,4 +11,3 @@ AI::AI(QWidget *parent)
 AI::~AI()
 {
     delete ui;
-}

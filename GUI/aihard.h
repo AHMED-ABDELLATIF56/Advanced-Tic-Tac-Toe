@@ -2,8 +2,8 @@
 #define AIHARD_H
 
 #include <QDialog>
-#include <QPushButton>
 #include <QVector>
+#include <QPushButton>
 
 namespace Ui {
 class aihard;
@@ -30,7 +30,12 @@ private:
     Ui::aihard *ui;
     QVector<QPushButton*> pushButton_array;
     QVector<char> board;
-    bool playerX; // true for Player X, false for Player O
+    bool playerX;
+
+    void connectButtons();
+    void disconnectButtons();
 };
 
 #endif // AIHARD_H
+
+

@@ -1,9 +1,0 @@
-C:/Users/pc/Documents/gui/CMakeFiles/untitled4.dir
-C:/Users/pc/Documents/gui/CMakeFiles/edit_cache.dir
-C:/Users/pc/Documents/gui/CMakeFiles/rebuild_cache.dir
-C:/Users/pc/Documents/gui/CMakeFiles/list_install_components.dir
-C:/Users/pc/Documents/gui/CMakeFiles/install.dir
-C:/Users/pc/Documents/gui/CMakeFiles/install/local.dir
-C:/Users/pc/Documents/gui/CMakeFiles/install/strip.dir
-C:/Users/pc/Documents/gui/CMakeFiles/untitled4_autogen_timestamp_deps.dir
-C:/Users/pc/Documents/gui/CMakeFiles/untitled4_autogen.dir
