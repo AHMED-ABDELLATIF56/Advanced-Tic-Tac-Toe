@@ -13,9 +13,17 @@ add_executable(New_folder
         src/Game.cpp
         src/GameManager.cpp
         src/Player.cpp
+<<<<<<< HEAD
+        src/main.cpp
+        src/main.cpp
+        src/main.cpp
+        src/main.cpp
+        src/database.h)
+=======
         src/database.cpp
         src/sqlite3.c
         include/database.h
 	src/database.cpp
 )
 	
+>>>>>>> 3b924b0d0ffdcb28f0b5ef682361bd55f15eddbe
