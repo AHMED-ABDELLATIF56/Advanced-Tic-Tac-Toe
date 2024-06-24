@@ -43,3 +43,7 @@
 368	3487	7363244861142404	CMakeFiles/New_folder.dir/src/GameManager.cpp.obj	48e6a1b222dbef10
 576	3715	7363244863426621	CMakeFiles/New_folder.dir/src/Player.cpp.obj	648780845cb4560c
 3716	4681	7363244873010490	New_folder.exe	85244629694ea4e5
+5	3065	7363993542090975	CMakeFiles/New_folder.dir/src/Game.cpp.obj	ecbaa911f66525ff
+503	3105	7363993542509859	CMakeFiles/New_folder.dir/src/Player.cpp.obj	648780845cb4560c
+586	3589	7363993547350124	CMakeFiles/New_folder.dir/src/GameManager.cpp.obj	48e6a1b222dbef10
+3590	5632	7363993567695672	New_folder.exe	85244629694ea4e5

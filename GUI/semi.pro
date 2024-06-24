@@ -15,6 +15,7 @@ SOURCES += \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
+    medium.cpp \
     twoplayer.cpp
 
 HEADERS += \
@@ -23,6 +24,7 @@ HEADERS += \
     hard1.h \
     login.h \
     mainwindow.h \
+    medium.h \
     twoplayer.h
 
 FORMS += \
@@ -31,6 +33,7 @@ FORMS += \
     hard1.ui \
     login.ui \
     mainwindow.ui \
+    medium.ui \
     twoplayer.ui
 
 # Default rules for deployment.

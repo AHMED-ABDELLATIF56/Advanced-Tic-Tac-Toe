@@ -16,6 +16,7 @@ class hard1 : public QDialog
 public:
     explicit hard1(QWidget *parent = nullptr);
     ~hard1();
+    int findBestMove();
 
 private slots:
     void handlePlayerMove(int index);
@@ -24,7 +25,6 @@ private slots:
     bool checkWinner(char player);
     bool isBoardFull();
     int minimax(char player, int depth, int alpha, int beta, bool maximizingPlayer);
-    int findBestMove();
     void resetGame(); // Declaration of resetGame function
 
 private:
