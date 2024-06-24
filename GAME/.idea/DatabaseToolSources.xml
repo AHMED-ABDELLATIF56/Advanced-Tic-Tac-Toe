@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DatabaseToolSources">
+    <data-source name="setup" uuid="e2fa67d0-a2d6-42f7-a8dc-9ed5bfcf6929" type="MYSQL">
+      <base-info connect-type="DB_DEFAULT" major-version="0" minor-version="0" jdbc-major-version="0" jdbc-minor-version="0" />
+      <user-name>ahmed</user-name>
+      <url>jdbc:mysql://localhost:3306/</url>
+      <remarks />
+      <vm-options />
+      <driver-info id="mysql8" />
+      <ssh-properties enabled="false" />
+      <jdbc-additional-properties>
+        <property name="characterSetResults" value="utf8" />
+        <property name="serverTimezone" value="Africa/Cairo" />
+        <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="useTimezone" value="true" />
+        <property name="yearIsDateType" value="false" />
+      </jdbc-additional-properties>
+      <ssl-config enabled="false">
+        <uuid />
+        <caFile />
+        <clientCertificateFile />
+        <clientKeyFile />
+        <sslMode>REQUIRE</sslMode>
+      </ssl-config>
+    </data-source>
+  </component>
+</project>

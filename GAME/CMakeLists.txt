@@ -12,4 +12,10 @@ add_executable(New_folder
         src/AI.cpp
         src/Game.cpp
         src/GameManager.cpp
-        src/Player.cpp)
+        src/Player.cpp
+        src/database.cpp
+        src/sqlite3.c
+        include/database.h
+	src/database.cpp
+)
+	
