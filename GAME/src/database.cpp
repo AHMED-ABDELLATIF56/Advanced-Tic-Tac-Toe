@@ -9,8 +9,8 @@
 
 using namespace std;
 
-Database::Database(const string& usersFile, const string& gameHistoryFile)
-    : usersFile(usersFile), gameHistoryFile(gameHistoryFile) {
+Database::Database(const string& usersFile)
+    : usersFile(usersFile) {
     // Constructor initializes with files
 }
 
@@ -80,13 +80,20 @@ bool Database::signIn(string& username) {
     }
 }
 
-void Database::saveGameHistory(const string& player1, const string& player2, const string& winner, const string& moves) {
+//===========================================================================================
+
+GameHistory::GameHistory(const string& gameHistoryFile)
+    : gameHistoryFile(gameHistoryFile) {
+    // Constructor initializes with files
+}
+
+void GameHistory::saveGameHistory(const string& player1, const string& player2, const string& winner, const string& moves) {
     ofstream file(gameHistoryFile, ios::app);
     file << player1 << ":" << player2 << ":" << winner << ":" << moves << endl;
     file.close();
 }
 
-vector<GameRecord> Database::parseGameHistory() {
+vector<GameRecord> GameHistory::parseGameHistory() {
     vector<GameRecord> gameRecords;
     ifstream file(gameHistoryFile);
     string line;
@@ -114,7 +121,7 @@ vector<GameRecord> Database::parseGameHistory() {
     return gameRecords;
 }
 
-void Database::viewGameHistory(const string& username) {
+void GameHistory::viewGameHistory(const string& username) {
     vector<GameRecord> gameHistory = parseGameHistory();
 
     if (gameHistory.empty()) {
@@ -151,7 +158,7 @@ void Database::viewGameHistory(const string& username) {
     displayBoard(gameHistory[reviewChoice - 1].moves);
 }
 
-void Database::displayBoard(const vector<string>& moves) {
+void GameHistory::displayBoard(const vector<string>& moves) {
     vector<char> board(9, ' ');
     string moves_string = moves[0];
     int Totalmove = stoi(moves_string);
@@ -162,7 +169,7 @@ void Database::displayBoard(const vector<string>& moves) {
     // Extract moves into an array of integers
     for (int i = 0; i < moves_string.length(); i++) {
         int digit = Totalmove % 10; // Get the last digit
-        move[i] = digit; // Store the digit in the array and increment counter
+        move[moves_string.length()-i-1] = digit; // Store the digit in the array and increment counter
         Totalmove /= 10; // Remove the last digit from the number
     }
 

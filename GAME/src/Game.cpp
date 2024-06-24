@@ -8,7 +8,8 @@ using namespace std;
 
 int main() {
 
-    Database database("users.txt", "game_history.txt"); // Create instance of Database
+    Database database("users.txt"); // Create instance of Database
+    GameHistory gamehistory("game_history.txt");
 
     int choice;
     string username;
@@ -50,7 +51,7 @@ int main() {
 
             switch (subChoice) {
                 case 1:
-                    database.viewGameHistory(username); // Use viewGameHistory method of Database
+                    gamehistory.viewGameHistory(username); // Use viewGameHistory method of Database
                     break;
                 case 2: {
                     Player* playerX = new HumanPlayer();
@@ -94,7 +95,7 @@ int main() {
                         }
                     }
 
-                    TicTacToe game(playerX, playerO, &database); // Pass database instance to TicTacToe
+                    TicTacToe game(playerX, playerO, &gamehistory); // Pass database instance to TicTacToe
                     game.playGame(username, opponentName);
 
                     delete playerX;
@@ -112,6 +113,4 @@ int main() {
             }
         }
     }
-
-    return 0;
 }

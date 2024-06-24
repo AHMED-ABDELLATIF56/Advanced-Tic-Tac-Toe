@@ -11,7 +11,7 @@ char opponent;
 Player* playerX;
 Player* playerO;
 
-TicTacToe::TicTacToe(Player* playerX, Player* playerO, Database* database)
+TicTacToe::TicTacToe(Player* playerX, Player* playerO, GameHistory* database)
     : playerX(playerX), playerO(playerO), database(database) {
     board = vector<char>(9, EMPTY);
     currentPlayer = PLAYER_X;

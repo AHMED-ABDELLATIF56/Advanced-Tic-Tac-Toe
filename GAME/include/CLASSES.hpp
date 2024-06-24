@@ -56,10 +56,10 @@ private:
     char opponent;
     Player* playerX;
     Player* playerO;
-    Database* database; // Database instance
+    GameHistory* database; // Database instance
 
 public:
-    TicTacToe(Player* playerX, Player* playerO, Database* database); // Constructor
+    TicTacToe(Player* playerX, Player* playerO, GameHistory* database); // Constructor
 
     void printBoard();
     bool checkWinner(char player);

@@ -27,18 +27,29 @@ private:
     void saveUser(const std::string& username, const std::string& password);
 
 public:
-    Database(const std::string& usersFile, const std::string& gameHistoryFile);
+    Database(const std::string& usersFile);
 
-    void saveGameHistory(const std::string& player1, const std::string& player2, const std::string& winner, const std::string& moves);
     bool signUp();
     bool signIn(std::string& username);
+
+private:
+    std::string usersFile;
+};
+
+
+class GameHistory {
+
+public:
+    GameHistory(const std::string& gameHistoryFile);
+
+    void saveGameHistory(const std::string& player1, const std::string& player2, const std::string& winner, const std::string& moves);
     std::vector<GameRecord> parseGameHistory();
     void viewGameHistory(const std::string& username);
     void displayBoard(const std::vector<std::string>& moves);
 
 private:
-    std::string usersFile;
     std::string gameHistoryFile;
 };
+
 
 #endif //DATABASE_H
