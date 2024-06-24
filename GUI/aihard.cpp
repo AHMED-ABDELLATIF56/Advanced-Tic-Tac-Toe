@@ -4,8 +4,8 @@
 #include <cstdlib>
 #include <ctime>
 
-aihard::aihard(QWidget *parent) :
-    QDialog(parent),
+aihard::aihard(QWidget *parent)
+    : QDialog(parent),
     ui(new Ui::aihard),
     playerX(true)
 {
@@ -22,13 +22,10 @@ aihard::aihard(QWidget *parent) :
     board = QVector<char>(9, ' ');
 
     // Connect all buttons to handlePlayerMove slot
-    for (int i = 0; i < 9; ++i) {
-        connect(pushButton_array[i], &QPushButton::clicked, [this, i]() {
-            handlePlayerMove(i);
-        });
-    }
+    connectButtons(); // Connect button signals
 
-    resetGame(); // Initialize/reset game state
+    // Player always starts first
+    playerX = true;
 }
 
 aihard::~aihard()
@@ -47,9 +44,9 @@ void aihard::handlePlayerMove(int index)
 
     checkGameStatus(); // Check game status after each move
 
-    // AI move after player's move
+    // Check if the game is over
     if (!checkWinner('X') && !checkWinner('O') && !isBoardFull()) {
-        aiMove();
+        aiMove(); // AI move after player's move
     }
 }
 
@@ -119,11 +116,32 @@ int aihard::findBestMove()
 
 void aihard::resetGame()
 {
+    disconnectButtons(); // Disconnect button signals
+
     // Clear all buttons and reset board and player turn
     for (int i = 0; i < 9; ++i) {
         pushButton_array[i]->setText(""); // Clear text on button
         board[i] = ' '; // Reset board state
     }
     playerX = true; // Assuming X starts first
+
+    connectButtons(); // Reconnect button signals
 }
+
+void aihard::connectButtons()
+{
+    for (int i = 0; i < 9; ++i) {
+        connect(pushButton_array[i], &QPushButton::clicked, [this, i]() {
+            handlePlayerMove(i);
+        });
+    }
+}
+
+void aihard::disconnectButtons()
+{
+    for (int i = 0; i < 9; ++i) {
+        disconnect(pushButton_array[i], &QPushButton::clicked, nullptr, nullptr);
+    }
+}
+
 
