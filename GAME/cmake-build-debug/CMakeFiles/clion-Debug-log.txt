@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-"C:\Program Files\JetBrains\CLion 2023.2.1\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2023.2.1/bin/ninja/win/x64/ninja.exe" -G Ninja -S C:\Users\elnoor\Desktop\Advanced-Tic-Tac-Toe\GAME -B C:\Users\elnoor\Desktop\Advanced-Tic-Tac-Toe\GAME\cmake-build-debug
--- Configuring done (0.3s)
-CMake Error at CMakeLists.txt:10 (add_executable):
-  Cannot find source file:
-
-    src/Game.cpp
-
-
-CMake Error at CMakeLists.txt:10 (add_executable):
-  No SOURCES given to target: New_folder
-
-
-CMake Generate step failed.  Build files cannot be regenerated correctly.
-=======
 "C:\Program Files\JetBrains\CLion 2024.1.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S "D:\college\seocnd year\second term\projects\Tic Tac Toe\Advanced-Tic-Tac-Toe\GAME" -B "D:\college\seocnd year\second term\projects\Tic Tac Toe\Advanced-Tic-Tac-Toe\GAME\cmake-build-debug"
 CMake Deprecation Warning:
   Support for "Extra Generators" like
@@ -23,7 +8,6 @@ CMake Deprecation Warning:
   use the cmake-file-api(7) to view CMake-generated project build trees.
 
 
--- Configuring done (0.2s)
+-- Configuring done (0.3s)
 -- Generating done (0.0s)
 -- Build files have been written to: D:/college/seocnd year/second term/projects/Tic Tac Toe/Advanced-Tic-Tac-Toe/GAME/cmake-build-debug
->>>>>>> 3b924b0d0ffdcb28f0b5ef682361bd55f15eddbe

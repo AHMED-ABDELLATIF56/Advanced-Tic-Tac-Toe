@@ -6,11 +6,7 @@
 #define DATABASE_H
 
 #include <string>
-#include <sqlite3.h>
-
 #include <fstream>
-#include <sstream>
-#include <iostream>
 #include <string>
 #include <unordered_map>
 #include <vector>

@@ -7,6 +7,7 @@
 using namespace std;
 
 int main() {
+
     Database database("users.txt", "game_history.txt"); // Create instance of Database
 
     int choice;

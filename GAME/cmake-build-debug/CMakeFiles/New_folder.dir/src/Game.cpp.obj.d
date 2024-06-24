@@ -143,10 +143,6 @@ CMakeFiles/New_folder.dir/src/Game.cpp.obj: \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fstream.tcc \
  D:/college/seocnd\ year/second\ term/projects/Tic\ Tac\ Toe/Advanced-Tic-Tac-Toe/GAME/include/CLASSES.hpp \
  D:/college/seocnd\ year/second\ term/projects/Tic\ Tac\ Toe/Advanced-Tic-Tac-Toe/GAME/include/database.h \
- D:/college/seocnd\ year/second\ term/projects/Tic\ Tac\ Toe/Advanced-Tic-Tac-Toe/GAME/include/sqlite3.h \
- C:/Program\ Files/JetBrains/CLion\ 2024.1.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdarg.h \
- C:/Program\ Files/JetBrains/CLion\ 2024.1.4/bin/mingw/x86_64-w64-mingw32/include/stdarg.h \
- C:/Program\ Files/JetBrains/CLion\ 2024.1.4/bin/mingw/x86_64-w64-mingw32/include/_mingw_stdarg.h \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/unordered_map \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/unordered_map.h \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/hashtable.h \

@@ -8,7 +8,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "D:/college/seocnd year/second term/projects/Tic Tac Toe/Advanced-Tic-Tac-Toe/GAME/src/sqlite3.c" "CMakeFiles/New_folder.dir/src/sqlite3.c.obj" "gcc" "CMakeFiles/New_folder.dir/src/sqlite3.c.obj.d"
   "D:/college/seocnd year/second term/projects/Tic Tac Toe/Advanced-Tic-Tac-Toe/GAME/src/AI.cpp" "CMakeFiles/New_folder.dir/src/AI.cpp.obj" "gcc" "CMakeFiles/New_folder.dir/src/AI.cpp.obj.d"
   "D:/college/seocnd year/second term/projects/Tic Tac Toe/Advanced-Tic-Tac-Toe/GAME/src/Game.cpp" "CMakeFiles/New_folder.dir/src/Game.cpp.obj" "gcc" "CMakeFiles/New_folder.dir/src/Game.cpp.obj.d"
   "D:/college/seocnd year/second term/projects/Tic Tac Toe/Advanced-Tic-Tac-Toe/GAME/src/GameManager.cpp" "CMakeFiles/New_folder.dir/src/GameManager.cpp.obj" "gcc" "CMakeFiles/New_folder.dir/src/GameManager.cpp.obj.d"

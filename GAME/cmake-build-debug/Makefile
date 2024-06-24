@@ -248,30 +248,6 @@ src/database.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_folder.dir\build.make CMakeFiles/New_folder.dir/src/database.cpp.s
 .PHONY : src/database.cpp.s
 
-src/sqlite3.obj: src/sqlite3.c.obj
-.PHONY : src/sqlite3.obj
-
-# target to build an object file
-src/sqlite3.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_folder.dir\build.make CMakeFiles/New_folder.dir/src/sqlite3.c.obj
-.PHONY : src/sqlite3.c.obj
-
-src/sqlite3.i: src/sqlite3.c.i
-.PHONY : src/sqlite3.i
-
-# target to preprocess a source file
-src/sqlite3.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_folder.dir\build.make CMakeFiles/New_folder.dir/src/sqlite3.c.i
-.PHONY : src/sqlite3.c.i
-
-src/sqlite3.s: src/sqlite3.c.s
-.PHONY : src/sqlite3.s
-
-# target to generate assembly for a file
-src/sqlite3.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_folder.dir\build.make CMakeFiles/New_folder.dir/src/sqlite3.c.s
-.PHONY : src/sqlite3.c.s
-
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -296,9 +272,6 @@ help:
 	@echo ... src/database.obj
 	@echo ... src/database.i
 	@echo ... src/database.s
-	@echo ... src/sqlite3.obj
-	@echo ... src/sqlite3.i
-	@echo ... src/sqlite3.s
 .PHONY : help
 
 
