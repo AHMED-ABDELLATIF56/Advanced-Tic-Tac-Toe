@@ -1,0 +1,13 @@
+debug/aihard.o
+debug/dialog.o
+debug/hard1.o
+debug/login.o
+debug/main.o
+debug/mainwindow.o
+debug/twoplayer.o
+debug/moc_aihard.o
+debug/moc_dialog.o
+debug/moc_hard1.o
+debug/moc_login.o
+debug/moc_mainwindow.o
+debug/moc_twoplayer.o
