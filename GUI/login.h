@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <vector>
+#include "database.h"
+#include "gamehistory.h"
 
 namespace Ui {
 class Dialog1;
@@ -20,13 +22,16 @@ class Dialog1 : public QDialog
 public:
     explicit Dialog1(QWidget *parent = nullptr);
     ~Dialog1();
+public slots:
+    void setUsername(const QString& username); // Slot to receive username
+
 
 private slots:
     void on_pushButton_two_player_clicked();
     void on_pushButton_AI_hard_clicked();
     void on_pushButton_AI_easy_clicked();
     void on_pushButton_AI_medium_clicked();
-    void on_pushButton_history_clicked();
+    void on_pushButton_viewHistory_clicked(const QString& username);
 
 private:
     Ui::Dialog1 *ui;
@@ -35,6 +40,7 @@ private:
     hard1 *hardWindow;          // Add this line
     medium *mediumWindow;          // Add this line
     std::vector<char> board;
+    GameHistory *gameHistory;
 };
 
 #endif // LOGIN_H

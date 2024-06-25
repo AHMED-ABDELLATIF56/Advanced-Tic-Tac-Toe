@@ -4,6 +4,8 @@
 #include <QDialog>
 #include <QPushButton>
 #include <QVector>
+#include "database.h"
+#include "gamehistory.h"
 
 namespace Ui {
 class hard1;
@@ -26,12 +28,14 @@ private slots:
     bool isBoardFull();
     int minimax(char player, int depth, int alpha, int beta, bool maximizingPlayer);
     void resetGame(); // Declaration of resetGame function
-
+    void saveGameHistory();
 private:
     Ui::hard1 *ui;
     QVector<QPushButton*> pushButton_array;
     QVector<char> board;
     bool playerX; // true for Player X, false for Player O
+    GameHistory *gameHistory;
+    Database *database;
 };
 
 #endif // HARD1_H

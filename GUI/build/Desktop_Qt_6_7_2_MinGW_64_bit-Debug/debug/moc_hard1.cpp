@@ -49,7 +49,8 @@ constexpr auto qt_meta_stringdata_CLASShard1ENDCLASS = QtMocHelpers::stringData(
     "alpha",
     "beta",
     "maximizingPlayer",
-    "resetGame"
+    "resetGame",
+    "saveGameHistory"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -62,7 +63,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASShard1ENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -70,13 +71,14 @@ Q_CONSTINIT static const uint qt_meta_data_CLASShard1ENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   56,    2, 0x08,    1 /* Private */,
-       4,    0,   59,    2, 0x08,    3 /* Private */,
-       5,    0,   60,    2, 0x08,    4 /* Private */,
-       6,    1,   61,    2, 0x08,    5 /* Private */,
-       8,    0,   64,    2, 0x08,    7 /* Private */,
-       9,    5,   65,    2, 0x08,    8 /* Private */,
-      14,    0,   76,    2, 0x08,   14 /* Private */,
+       1,    1,   62,    2, 0x08,    1 /* Private */,
+       4,    0,   65,    2, 0x08,    3 /* Private */,
+       5,    0,   66,    2, 0x08,    4 /* Private */,
+       6,    1,   67,    2, 0x08,    5 /* Private */,
+       8,    0,   70,    2, 0x08,    7 /* Private */,
+       9,    5,   71,    2, 0x08,    8 /* Private */,
+      14,    0,   82,    2, 0x08,   14 /* Private */,
+      15,    0,   83,    2, 0x08,   15 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Int,    3,
@@ -85,6 +87,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASShard1ENDCLASS[] = {
     QMetaType::Bool, QMetaType::Char,    7,
     QMetaType::Bool,
     QMetaType::Int, QMetaType::Char, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Bool,    7,   10,   11,   12,   13,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -119,6 +122,8 @@ Q_CONSTINIT const QMetaObject hard1::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         QtPrivate::TypeAndForceComplete<bool, std::false_type>,
         // method 'resetGame'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'saveGameHistory'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -140,6 +145,7 @@ void hard1::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         case 5: { int _r = _t->minimax((*reinterpret_cast< std::add_pointer_t<char>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<bool>>(_a[5])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 6: _t->resetGame(); break;
+        case 7: _t->saveGameHistory(); break;
         default: ;
         }
     }
@@ -164,13 +170,13 @@ int hard1::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 8)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 7;
+        _id -= 8;
     }
     return _id;
 }

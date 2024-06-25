@@ -1,6 +1,7 @@
 release/aihard.o
 release/database.o
 release/dialog.o
+release/gamehistory.o
 release/hard1.o
 release/login.o
 release/main.o
@@ -10,6 +11,7 @@ release/twoplayer.o
 release/moc_aihard.o
 release/moc_database.o
 release/moc_dialog.o
+release/moc_gamehistory.o
 release/moc_hard1.o
 release/moc_login.o
 release/moc_mainwindow.o

@@ -1,5 +1,7 @@
 #include "hard1.h"
 #include "ui_hard1.h"
+#include "database.h"
+#include "gamehistory.h"
 #include <QMessageBox>
 #include <cstdlib>
 #include <ctime>
@@ -11,6 +13,7 @@ hard1::hard1(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    gameHistory = new GameHistory("gamehistory.txt", this);
     // Initialize pushButton_array with UI buttons
     pushButton_array = {
         ui->pushButton, ui->pushButton_2, ui->pushButton_3,
@@ -172,4 +175,22 @@ void hard1::resetGame()
         board[i] = ' '; // Reset board state
     }
     playerX = true; // Assuming X starts first
+}
+void hard1::saveGameHistory()
+{
+    QString moves;
+    for (char cell : board) {
+        moves.append(cell);
+    }
+
+    QString winner;
+    if (checkWinner('X')) {
+        winner = "player x";
+    } else if (checkWinner('O')) {
+        winner = "player o";
+    } else {
+        winner = "Tie";
+    }
+
+    gameHistory->saveGameHistory(winner, moves);
 }

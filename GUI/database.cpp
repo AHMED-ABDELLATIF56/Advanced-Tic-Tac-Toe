@@ -76,3 +76,14 @@ bool Database::signIn(const QString& username, const QString& password)
         return false;
     }
 }
+void Database::saveGameHistory(const QString& player1, const QString& player2, const QString& winner, const QString& moves) {
+    QFile file("game_history.txt");
+    if (!file.open(QIODevice::Append | QIODevice::Text)) {
+        qDebug() << "Failed to open game history file for writing.";
+        return;
+    }
+
+    QTextStream out(&file);
+    out << player1 << ":" << player2 << ":" << winner << ":" << moves << '\n';
+    file.close();
+}
