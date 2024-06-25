@@ -1,4 +1,5 @@
 release/aihard.o
+release/database.o
 release/dialog.o
 release/hard1.o
 release/login.o
@@ -7,6 +8,7 @@ release/mainwindow.o
 release/medium.o
 release/twoplayer.o
 release/moc_aihard.o
+release/moc_database.o
 release/moc_dialog.o
 release/moc_hard1.o
 release/moc_login.o

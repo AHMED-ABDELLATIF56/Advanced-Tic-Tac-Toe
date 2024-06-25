@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     aihard.cpp \
+    database.cpp \
     dialog.cpp \
     hard1.cpp \
     login.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 
 HEADERS += \
     aihard.h \
+    database.h \
     dialog.h \
     hard1.h \
     login.h \
