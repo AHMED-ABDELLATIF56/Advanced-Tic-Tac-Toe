@@ -1,0 +1,13 @@
+release/tst_testcase.o
+release/aihard.o
+release/dialog.o
+release/hard1.o
+release/login.o
+release/mainwindow.o
+release/twoplayer.o
+release/moc_aihard.o
+release/moc_dialog.o
+release/moc_hard1.o
+release/moc_login.o
+release/moc_mainwindow.o
+release/moc_twoplayer.o
