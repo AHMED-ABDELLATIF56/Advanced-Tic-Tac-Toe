@@ -2,8 +2,9 @@
 #define AIHARD_H
 
 #include <QDialog>
-#include <QPushButton>
 #include <QVector>
+#include <QPushButton>
+#include "database.h"
 
 namespace Ui {
 class aihard;
@@ -12,9 +13,9 @@ class aihard;
 class aihard : public QDialog
 {
     Q_OBJECT
-    friend class TestPlayer;
+    friend class test ;
 public:
-    explicit aihard(QWidget *parent = nullptr);
+    explicit aihard(QWidget *parent = nullptr,QString username = "");
     ~aihard();
 
 private slots:
@@ -25,12 +26,22 @@ private slots:
     bool isBoardFull();
     int findBestMove();
     void resetGame();
+    void saveGameHistory(const QString& username);
+
 
 private:
     Ui::aihard *ui;
+     QString username;
+
     QVector<QPushButton*> pushButton_array;
     QVector<char> board;
-    bool playerX; // true for Player X, false for Player O
+    bool playerX;
+
+    void connectButtons();
+    void disconnectButtons();
+    Database *database;
 };
 
 #endif // AIHARD_H
+
+
