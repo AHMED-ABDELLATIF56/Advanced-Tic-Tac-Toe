@@ -248,6 +248,30 @@ src/database.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_folder.dir\build.make CMakeFiles/New_folder.dir/src/database.cpp.s
 .PHONY : src/database.cpp.s
 
+src/gamehistory.obj: src/gamehistory.cpp.obj
+.PHONY : src/gamehistory.obj
+
+# target to build an object file
+src/gamehistory.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_folder.dir\build.make CMakeFiles/New_folder.dir/src/gamehistory.cpp.obj
+.PHONY : src/gamehistory.cpp.obj
+
+src/gamehistory.i: src/gamehistory.cpp.i
+.PHONY : src/gamehistory.i
+
+# target to preprocess a source file
+src/gamehistory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_folder.dir\build.make CMakeFiles/New_folder.dir/src/gamehistory.cpp.i
+.PHONY : src/gamehistory.cpp.i
+
+src/gamehistory.s: src/gamehistory.cpp.s
+.PHONY : src/gamehistory.s
+
+# target to generate assembly for a file
+src/gamehistory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_folder.dir\build.make CMakeFiles/New_folder.dir/src/gamehistory.cpp.s
+.PHONY : src/gamehistory.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -272,6 +296,9 @@ help:
 	@echo ... src/database.obj
 	@echo ... src/database.i
 	@echo ... src/database.s
+	@echo ... src/gamehistory.obj
+	@echo ... src/gamehistory.i
+	@echo ... src/gamehistory.s
 .PHONY : help
 
 

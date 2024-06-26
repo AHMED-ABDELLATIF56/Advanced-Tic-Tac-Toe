@@ -5,7 +5,7 @@ AI::AI(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::AI)
 {
-    ui->setupUi(this);
+    ui->setupUi(this); 
 }
 
 AI::~AI()

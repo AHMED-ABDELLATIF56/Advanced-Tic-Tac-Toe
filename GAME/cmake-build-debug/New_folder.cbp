@@ -109,6 +109,9 @@
 		<Unit filename="D:/college/seocnd year/second term/projects/Tic Tac Toe/Advanced-Tic-Tac-Toe/GAME/src/database.cpp">
 			<Option target="New_folder"/>
 		</Unit>
+		<Unit filename="D:/college/seocnd year/second term/projects/Tic Tac Toe/Advanced-Tic-Tac-Toe/GAME/src/gamehistory.cpp">
+			<Option target="New_folder"/>
+		</Unit>
 		<Unit filename="D:/college/seocnd year/second term/projects/Tic Tac Toe/Advanced-Tic-Tac-Toe/GAME/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

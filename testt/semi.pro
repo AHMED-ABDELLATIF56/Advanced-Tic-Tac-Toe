@@ -10,27 +10,36 @@ CONFIG += c++17
 
 SOURCES += \
     aihard.cpp \
+    database.cpp \
     dialog.cpp \
+    gamehistory.cpp \
+    gamehistorydialog.cpp \
     hard1.cpp \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
+    medium.cpp \
     twoplayer.cpp
 
 HEADERS += \
     aihard.h \
+    database.h \
     dialog.h \
+    gamehistorydialog.h \
     hard1.h \
     login.h \
     mainwindow.h \
+    medium.h \
     twoplayer.h
 
 FORMS += \
     aihard.ui \
     dialog.ui \
+    gamehistorydialog.ui \
     hard1.ui \
     login.ui \
     mainwindow.ui \
+    medium.ui \
     twoplayer.ui
 
 # Default rules for deployment.
