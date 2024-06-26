@@ -4,7 +4,6 @@
 #include <QDialog>
 #include <QPushButton>
 #include <QVector>
-#include "database.h"
 
 namespace Ui {
 class hard1;
@@ -13,12 +12,10 @@ class hard1;
 class hard1 : public QDialog
 {
     Q_OBJECT
-    friend class test;
-
+     friend class TestPlayer;
 public:
-    explicit hard1(QWidget *parent = nullptr,QString username = "");
+    explicit hard1(QWidget *parent = nullptr);
     ~hard1();
-    int findBestMove();
 
 private slots:
     void handlePlayerMove(int index);
@@ -27,16 +24,14 @@ private slots:
     bool checkWinner(char player);
     bool isBoardFull();
     int minimax(char player, int depth, int alpha, int beta, bool maximizingPlayer);
+    int findBestMove();
     void resetGame(); // Declaration of resetGame function
-    void saveGameHistory(const QString& username);
+
 private:
     Ui::hard1 *ui;
-     QString username;
     QVector<QPushButton*> pushButton_array;
     QVector<char> board;
     bool playerX; // true for Player X, false for Player O
-
-    Database *database;
 };
 
 #endif // HARD1_H

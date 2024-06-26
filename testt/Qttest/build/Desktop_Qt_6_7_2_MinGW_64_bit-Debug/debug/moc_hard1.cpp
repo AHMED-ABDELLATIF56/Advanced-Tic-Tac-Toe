@@ -49,9 +49,8 @@ constexpr auto qt_meta_stringdata_CLASShard1ENDCLASS = QtMocHelpers::stringData(
     "alpha",
     "beta",
     "maximizingPlayer",
-    "resetGame",
-    "saveGameHistory",
-    "username"
+    "findBestMove",
+    "resetGame"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -79,7 +78,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASShard1ENDCLASS[] = {
        8,    0,   70,    2, 0x08,    7 /* Private */,
        9,    5,   71,    2, 0x08,    8 /* Private */,
       14,    0,   82,    2, 0x08,   14 /* Private */,
-      15,    1,   83,    2, 0x08,   15 /* Private */,
+      15,    0,   83,    2, 0x08,   15 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Int,    3,
@@ -88,8 +87,8 @@ Q_CONSTINIT static const uint qt_meta_data_CLASShard1ENDCLASS[] = {
     QMetaType::Bool, QMetaType::Char,    7,
     QMetaType::Bool,
     QMetaType::Int, QMetaType::Char, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Bool,    7,   10,   11,   12,   13,
+    QMetaType::Int,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   16,
 
        0        // eod
 };
@@ -122,11 +121,10 @@ Q_CONSTINIT const QMetaObject hard1::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         QtPrivate::TypeAndForceComplete<bool, std::false_type>,
+        // method 'findBestMove'
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'resetGame'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'saveGameHistory'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
 } };
@@ -146,8 +144,9 @@ void hard1::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         case 5: { int _r = _t->minimax((*reinterpret_cast< std::add_pointer_t<char>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<bool>>(_a[5])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 6: _t->resetGame(); break;
-        case 7: _t->saveGameHistory((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 6: { int _r = _t->findBestMove();
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+        case 7: _t->resetGame(); break;
         default: ;
         }
     }

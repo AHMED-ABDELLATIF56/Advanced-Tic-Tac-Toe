@@ -1,13 +1,9 @@
-#ifndef DIALOG1_H
-#define DIALOG1_H
+#ifndef LOGIN_H
+#define LOGIN_H
 
 #include <QDialog>
-#include "gamehistorydialog.h"
-#include "twoplayer.h"
-#include "aihard.h"
-#include "hard1.h"
-#include "medium.h"
 
+#include <vector>
 namespace Ui {
 class Dialog1;
 }
@@ -15,26 +11,26 @@ class Dialog1;
 class Dialog1 : public QDialog
 {
     Q_OBJECT
-    friend class test ;
+    friend class TestPlayer;
 public:
-    explicit Dialog1(QWidget *parent = nullptr, QString username = "");
+    explicit Dialog1(QWidget *parent = nullptr);
     ~Dialog1();
 
 private slots:
+
+
     void on_pushButton_two_player_clicked();
-    void on_pushButton_AI_easy_clicked();
-    void on_pushButton_AI_medium_clicked();
+
     void on_pushButton_AI_hard_clicked();
-    void on_pushButton_viewHistory_clicked();
+
+    void on_pushButton_AI_easy_clicked();
+
+    void on_pushButton_history_clicked();
 
 private:
     Ui::Dialog1 *ui;
-    QString username;
-    twoplayer *twoPlayerWindow;
-    aihard *aiHardWindow;
-    medium *mediumWindow;
-    hard1 *hardWindow;
-    GameHistoryDialog *gameHistory;
+    std::vector<char> board;
 };
 
-#endif // DIALOG1_H
+#endif // LOGIN_H
+

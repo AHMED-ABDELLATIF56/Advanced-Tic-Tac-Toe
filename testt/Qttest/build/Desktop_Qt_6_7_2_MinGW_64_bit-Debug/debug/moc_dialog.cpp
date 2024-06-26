@@ -36,10 +36,11 @@ namespace {
 struct qt_meta_stringdata_CLASSDialogENDCLASS_t {};
 constexpr auto qt_meta_stringdata_CLASSDialogENDCLASS = QtMocHelpers::stringData(
     "Dialog",
-    "registrationSuccess",
+    "on_label_linkActivated",
     "",
-    "onAcceptClicked",
-    "onCancelClicked"
+    "link",
+    "on_pushButton_clicked",
+    "on_Dialog_accepted"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -57,19 +58,15 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDialogENDCLASS[] = {
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
-
- // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   32,    2, 0x06,    1 /* Public */,
+       0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       3,    0,   33,    2, 0x08,    2 /* Private */,
-       4,    0,   34,    2, 0x08,    3 /* Private */,
-
- // signals: parameters
-    QMetaType::Void,
+       1,    1,   32,    2, 0x08,    1 /* Private */,
+       4,    0,   35,    2, 0x08,    3 /* Private */,
+       5,    0,   36,    2, 0x08,    4 /* Private */,
 
  // slots: parameters
+    QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -85,11 +82,12 @@ Q_CONSTINIT const QMetaObject Dialog::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSDialogENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<Dialog, std::true_type>,
-        // method 'registrationSuccess'
+        // method 'on_label_linkActivated'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onAcceptClicked'
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        // method 'on_pushButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'onCancelClicked'
+        // method 'on_Dialog_accepted'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -101,22 +99,12 @@ void Dialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         auto *_t = static_cast<Dialog *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->registrationSuccess(); break;
-        case 1: _t->onAcceptClicked(); break;
-        case 2: _t->onCancelClicked(); break;
+        case 0: _t->on_label_linkActivated((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 1: _t->on_pushButton_clicked(); break;
+        case 2: _t->on_Dialog_accepted(); break;
         default: ;
         }
-    } else if (_c == QMetaObject::IndexOfMethod) {
-        int *result = reinterpret_cast<int *>(_a[0]);
-        {
-            using _t = void (Dialog::*)();
-            if (_t _q_method = &Dialog::registrationSuccess; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
-                *result = 0;
-                return;
-            }
-        }
     }
-    (void)_a;
 }
 
 const QMetaObject *Dialog::metaObject() const
@@ -147,11 +135,5 @@ int Dialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         _id -= 3;
     }
     return _id;
-}
-
-// SIGNAL 0
-void Dialog::registrationSuccess()
-{
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 QT_WARNING_POP

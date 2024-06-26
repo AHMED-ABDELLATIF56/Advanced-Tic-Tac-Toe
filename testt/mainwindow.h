@@ -2,33 +2,26 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "database.h" // Include Database header
-#include "dialog.h"   // Include registration dialog header
+#include "dialog.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
-    friend class test ;
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    QString getUsername() const;
-
-
-
 
 private slots:
-    void on_pushButton_4_clicked(); // Sign-up button clicked
-    void on_pushButton_1_clicked(); // Sign-in button clicked
-    void handleRegistrationSuccess(); // Slot to handle successful registration
+    void on_pushButton_4_clicked();
+    void on_pushButton_1_clicked();
 
 private:
     Ui::MainWindow *ui;
-    Database *database; // Database instance
 };
 
 #endif // MAINWINDOW_H

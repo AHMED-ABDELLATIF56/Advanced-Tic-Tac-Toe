@@ -2,7 +2,6 @@
 #define DIALOG_H
 
 #include <QDialog>
-#include "database.h"
 
 namespace Ui {
 class Dialog;
@@ -11,21 +10,18 @@ class Dialog;
 class Dialog : public QDialog
 {
     Q_OBJECT
- friend class test ;
+     friend class TestPlayer;
 public:
-    explicit Dialog(Database *db, QWidget *parent = nullptr);
+    Dialog(QWidget *parent = nullptr);
     ~Dialog();
 
-signals:
-    void registrationSuccess();
-
 private slots:
-    void onAcceptClicked();
-    void onCancelClicked();
+    void on_label_linkActivated(const QString &link);
+    void on_pushButton_clicked();
+    void on_Dialog_accepted();
 
 private:
     Ui::Dialog *ui;
-    Database *database;
 };
 
 #endif // DIALOG_H

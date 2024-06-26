@@ -103,7 +103,7 @@ public:
     void retranslateUi(QDialog *twoplayer)
     {
         twoplayer->setWindowTitle(QCoreApplication::translate("twoplayer", "Dialog", nullptr));
-        groupBox->setTitle(QCoreApplication::translate("twoplayer", "Two_player", nullptr));
+        groupBox->setTitle(QCoreApplication::translate("twoplayer", "GroupBox", nullptr));
         pushButton_1->setText(QString());
         pushButton_3->setText(QString());
         pushButton_4->setText(QString());

@@ -41,10 +41,10 @@ public:
         Dialog1->resize(400, 300);
         label = new QLabel(Dialog1);
         label->setObjectName("label");
-        label->setGeometry(QRect(0, 60, 191, 20));
+        label->setGeometry(QRect(90, 20, 191, 20));
         layoutWidget = new QWidget(Dialog1);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(210, 40, 95, 103));
+        layoutWidget->setGeometry(QRect(140, 60, 95, 103));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -60,7 +60,7 @@ public:
 
         layoutWidget1 = new QWidget(Dialog1);
         layoutWidget1->setObjectName("layoutWidget1");
-        layoutWidget1->setGeometry(QRect(0, 180, 311, 31));
+        layoutWidget1->setGeometry(QRect(110, 190, 172, 31));
         horizontalLayout = new QHBoxLayout(layoutWidget1);
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -76,7 +76,7 @@ public:
 
         pushButton_history = new QPushButton(Dialog1);
         pushButton_history->setObjectName("pushButton_history");
-        pushButton_history->setGeometry(QRect(110, 240, 93, 29));
+        pushButton_history->setGeometry(QRect(160, 240, 93, 29));
 
         retranslateUi(Dialog1);
 
