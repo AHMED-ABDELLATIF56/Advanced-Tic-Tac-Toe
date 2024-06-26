@@ -166,7 +166,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>reply previous games</string>
+    <string>show final board</string>
    </property>
   </widget>
  </widget>

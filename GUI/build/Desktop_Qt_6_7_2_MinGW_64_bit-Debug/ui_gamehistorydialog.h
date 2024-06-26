@@ -66,7 +66,7 @@ public:
         ___qtablewidgetitem1->setText(QCoreApplication::translate("GameHistoryDialog", "second player", nullptr));
         QTableWidgetItem *___qtablewidgetitem2 = tableWidget_history->horizontalHeaderItem(2);
         ___qtablewidgetitem2->setText(QCoreApplication::translate("GameHistoryDialog", "winner", nullptr));
-        pushButton_replayGame->setText(QCoreApplication::translate("GameHistoryDialog", "reply previous games", nullptr));
+        pushButton_replayGame->setText(QCoreApplication::translate("GameHistoryDialog", "show final board", nullptr));
     } // retranslateUi
 
 };
