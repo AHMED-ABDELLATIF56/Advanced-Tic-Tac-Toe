@@ -15,5 +15,6 @@ add_executable(New_folder
         src/GameManager.cpp
         src/Player.cpp
         src/database.cpp
+        src/gamehistory.cpp
 )
 

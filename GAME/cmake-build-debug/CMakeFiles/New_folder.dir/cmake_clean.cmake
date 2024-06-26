@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/New_folder.dir/src/Player.cpp.obj.d"
   "CMakeFiles/New_folder.dir/src/database.cpp.obj"
   "CMakeFiles/New_folder.dir/src/database.cpp.obj.d"
+  "CMakeFiles/New_folder.dir/src/gamehistory.cpp.obj"
+  "CMakeFiles/New_folder.dir/src/gamehistory.cpp.obj.d"
   "New_folder.exe"
   "New_folder.exe.manifest"
   "New_folder.pdb"
