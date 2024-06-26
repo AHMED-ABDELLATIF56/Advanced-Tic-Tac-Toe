@@ -7,17 +7,19 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
-
-
+#include <QElapsedTimer>
+#include <QDebug>
 
 hard1::hard1(QWidget *parent, QString username) :
-    QDialog(parent)
-    , ui(new Ui::hard1)
-    ,username(username)
-    ,playerX(true)
+    QDialog(parent),
+    ui(new Ui::hard1),
+    username(username),
+    playerX(true)
 {
-    ui->setupUi(this);
+    QElapsedTimer timer;
+    timer.start();
 
+    ui->setupUi(this);
 
     pushButton_array = {
         ui->pushButton, ui->pushButton_2, ui->pushButton_3,
@@ -36,6 +38,9 @@ hard1::hard1(QWidget *parent, QString username) :
     }
 
     resetGame(); // Initialize/reset game state
+
+    qint64 initTime = timer.nsecsElapsed();
+    qDebug() << "Hard1 initialization took" << initTime << "nanoseconds";
 }
 
 hard1::~hard1()
@@ -45,11 +50,14 @@ hard1::~hard1()
 
 void hard1::handlePlayerMove(int index)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     QPushButton* button = pushButton_array[index];
     if (!button->text().isEmpty()) return; // If the button already has text, do nothing
 
-    button->setText( "X" ); // Set 'X' or 'O' based on player's turn
-    board[index] = 'X' ; // Update the board state
+    button->setText("X"); // Set 'X' or 'O' based on player's turn
+    board[index] = 'X'; // Update the board state
     playerX = !playerX; // Toggle player turn
 
     checkGameStatus(); // Check game status after each move
@@ -58,10 +66,16 @@ void hard1::handlePlayerMove(int index)
     if (!checkWinner('X') && !checkWinner('O') && !isBoardFull()) {
         aiMove();
     }
+
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "Player move took" << elapsed << "nanoseconds";
 }
 
 void hard1::aiMove()
 {
+    QElapsedTimer timer;
+    timer.start();
+
     int bestMove = findBestMove(); // Determine AI's move
     QPushButton* button = pushButton_array[bestMove];
     button->setText("O"); // Set 'X' or 'O' based on AI's turn
@@ -69,10 +83,16 @@ void hard1::aiMove()
     playerX = !playerX; // Toggle player turn
 
     checkGameStatus(); // Check game status after AI's move
+
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "AI move took" << elapsed << "nanoseconds";
 }
 
 void hard1::checkGameStatus()
 {
+    QElapsedTimer timer;
+    timer.start();
+
     if (checkWinner('X')) {
         QMessageBox::information(this, "Game Over", "Player X wins!");
         saveGameHistory(username); // Save game history
@@ -86,6 +106,9 @@ void hard1::checkGameStatus()
         saveGameHistory(username); // Save game history
         resetGame();
     }
+
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "Game status check took" << elapsed << "nanoseconds";
 }
 
 bool hard1::checkWinner(char player)
@@ -155,6 +178,9 @@ int hard1::minimax(char player, int depth, int alpha, int beta, bool maximizingP
 
 int hard1::findBestMove()
 {
+    QElapsedTimer timer;
+    timer.start();
+
     int bestMove = -1;
     int bestVal = -1000; // Initial value for maximizing player
 
@@ -171,21 +197,32 @@ int hard1::findBestMove()
         }
     }
 
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "Finding best move took" << elapsed << "nanoseconds";
+
     return bestMove;
 }
 
 void hard1::resetGame()
 {
+    QElapsedTimer timer;
+    timer.start();
+
     // Clear all buttons and reset board and player turn
     for (int i = 0; i < 9; ++i) {
         pushButton_array[i]->setText(""); // Clear text on button
         board[i] = ' '; // Reset board state
     }
     playerX = true; // Assuming X starts first
+
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "Game reset took" << elapsed << "nanoseconds";
 }
 
 void hard1::saveGameHistory(const QString& username)
 {
+    QElapsedTimer timer;
+    timer.start();
 
     std::vector<std::string> movesVector;
     for (char cell : board) {
@@ -208,5 +245,7 @@ void hard1::saveGameHistory(const QString& username)
     // Use username to save history in a user-specific way
     GameHistory gameHistory("game_history.txt");
     gameHistory.saveGameHistory(username.toStdString(), "Computer_hard", winner.toStdString(), movesVector);
-}
 
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "Saving game history took" << elapsed << "nanoseconds";
+}

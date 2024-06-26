@@ -4,6 +4,8 @@
 #include <QMessageBox>
 #include <cstdlib>
 #include <ctime>
+#include <QElapsedTimer>
+#include <QDebug>
 
 medium::medium(QWidget *parent, QString username) :
     QDialog(parent),
@@ -11,6 +13,9 @@ medium::medium(QWidget *parent, QString username) :
     username(username),
     playerX(true)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     ui->setupUi(this);
 
     // Initialize pushButton_array with UI buttons
@@ -42,6 +47,9 @@ medium::medium(QWidget *parent, QString username) :
     srand(static_cast<unsigned>(time(nullptr)));
 
     resetGame(); // Initialize/reset game state
+
+    qint64 initTime = timer.nsecsElapsed();
+    qDebug() << "Medium initialization took" << initTime << "nanoseconds";
 }
 
 medium::~medium()
@@ -51,11 +59,14 @@ medium::~medium()
 
 void medium::handlePlayerMove(int index)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     QPushButton* button = pushButton_array[index];
     if (!button->text().isEmpty()) return; // If the button already has text, do nothing
 
-    button->setText( "X" ); // Set 'X' or 'O' based on player's turn
-    board[index] =  'X'; // Update the board state
+    button->setText("X"); // Set 'X' or 'O' based on player's turn
+    board[index] = 'X'; // Update the board state
     playerX = !playerX; // Toggle player turn
 
     checkGameStatus(); // Check game status after each move
@@ -64,25 +75,37 @@ void medium::handlePlayerMove(int index)
     if (!checkWinner('X') && !checkWinner('O') && !isBoardFull()) {
         aiMove(); // AI move after player's move
     }
+
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "Player move took" << elapsed << "nanoseconds";
 }
 
 void medium::aiMove()
 {
+    QElapsedTimer timer;
+    timer.start();
+
     int bestMove = findBestMove(); // Determine AI's move
     if (bestMove == -1) {
         QMessageBox::critical(this, "Error", "AI cannot find a valid move.");
         return;
     }
     QPushButton* button = pushButton_array[bestMove];
-    button->setText( "O"); // Set 'X' or 'O' based on AI's turn
-    board[bestMove] =  'O'; // Update the board state
+    button->setText("O"); // Set 'X' or 'O' based on AI's turn
+    board[bestMove] = 'O'; // Update the board state
     playerX = !playerX; // Toggle player turn
 
     checkGameStatus(); // Check game status after AI's move
+
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "AI move took" << elapsed << "nanoseconds";
 }
 
 void medium::checkGameStatus()
 {
+    QElapsedTimer timer;
+    timer.start();
+
     if (checkWinner('X')) {
         QMessageBox::information(this, "Game Over", "Player X wins!");
         saveGameHistory(username); // Save game history
@@ -96,7 +119,11 @@ void medium::checkGameStatus()
         saveGameHistory(username); // Save game history
         resetGame();
     }
+
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "Game status check took" << elapsed << "nanoseconds";
 }
+
 bool medium::checkWinner(char player)
 {
     // Check all winning conditions
@@ -125,34 +152,50 @@ bool medium::isBoardFull()
 
 int medium::findBestMove()
 {
+    QElapsedTimer timer;
+    timer.start();
+
     if (isBoardFull()) {
         return -1; // Board is full, no valid moves
     }
 
     int index;
-    do{
-    int chance = rand() % 100; // Random chance between 0 and 99
+    do {
+        int chance = rand() % 100; // Random chance between 0 and 99
         if (chance <= 25) {
-            index = rand() % 9; // Random move if chance is <= 40
+            index = rand() % 9; // Random move if chance is <= 25
         } else {
             hard1 obj1(this); // Assuming PLAYER_O is opponent symbol
             index = obj1.findBestMove(); // Let AIPlayer make move
-        }}while(board[index] != ' ');
+        }
+    } while (board[index] != ' ');
+
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "Finding best move took" << elapsed << "nanoseconds";
 
     return index;
 }
 
 void medium::resetGame()
 {
+    QElapsedTimer timer;
+    timer.start();
+
     // Clear all buttons and reset board and player turn
     for (int i = 0; i < 9; ++i) {
         pushButton_array[i]->setText(""); // Clear text on button
         board[i] = ' '; // Reset board state
     }
     playerX = true; // Assuming X starts first
+
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "Game reset took" << elapsed << "nanoseconds";
 }
+
 void medium::saveGameHistory(const QString& username)
 {
+    QElapsedTimer timer;
+    timer.start();
 
     std::vector<std::string> movesVector;
     for (char cell : board) {
@@ -175,4 +218,7 @@ void medium::saveGameHistory(const QString& username)
     // Use username to save history in a user-specific way
     GameHistory gameHistory("game_history.txt");
     gameHistory.saveGameHistory(username.toStdString(), "Computer_medium", winner.toStdString(), movesVector);
+
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "Saving game history took" << elapsed << "nanoseconds";
 }

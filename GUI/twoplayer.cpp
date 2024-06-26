@@ -3,8 +3,8 @@
 #include <QMessageBox>
 #include "database.h"
 #include "mainwindow.h"
-
-
+#include <QElapsedTimer>
+#include <QDebug>
 
 twoplayer::twoplayer(QWidget *parent, QString username) :
     QDialog(parent),
@@ -12,6 +12,9 @@ twoplayer::twoplayer(QWidget *parent, QString username) :
     username(username),
     playerX(true)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     ui->setupUi(this);
     // Initialize pushButton_array with UI buttons
     pushButton_array = {
@@ -28,8 +31,10 @@ twoplayer::twoplayer(QWidget *parent, QString username) :
 
     // Player X always starts first
     playerX = true;
-}
 
+    qint64 initTime = timer.nsecsElapsed();
+    qDebug() << "TwoPlayer initialization took" << initTime << "nanoseconds";
+}
 
 twoplayer::~twoplayer()
 {
@@ -38,6 +43,9 @@ twoplayer::~twoplayer()
 
 void twoplayer::handlePlayerMove(int index)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     QPushButton* button = pushButton_array[index];
     if (!button->text().isEmpty()) return; // If the button already has text, do nothing
 
@@ -46,10 +54,16 @@ void twoplayer::handlePlayerMove(int index)
     playerX = !playerX; // Toggle player turn
 
     checkGameStatus(); // Check game status after each move
+
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "Player move took" << elapsed << "nanoseconds";
 }
 
 void twoplayer::checkGameStatus()
 {
+    QElapsedTimer timer;
+    timer.start();
+
     if (checkWinner('X')) {
         QMessageBox::information(this, "Game Over", "Player X wins!");
         saveGameHistory(username); // Save game history
@@ -63,6 +77,9 @@ void twoplayer::checkGameStatus()
         saveGameHistory(username); // Save game history
         resetGame();
     }
+
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "Game status check took" << elapsed << "nanoseconds";
 }
 
 bool twoplayer::checkWinner(char player)
@@ -93,6 +110,9 @@ bool twoplayer::isBoardFull()
 
 void twoplayer::resetGame()
 {
+    QElapsedTimer timer;
+    timer.start();
+
     // Clear all buttons and reset board and player turn
     for (int i = 0; i < 9; ++i) {
         pushButton_array[i]->setText(""); // Clear text on button
@@ -101,6 +121,9 @@ void twoplayer::resetGame()
     playerX = true; // X starts first
 
     connectButtons(); // Reconnect button signals
+
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "Game reset took" << elapsed << "nanoseconds";
 }
 
 void twoplayer::connectButtons()
@@ -121,6 +144,8 @@ void twoplayer::disconnectButtons()
 
 void twoplayer::saveGameHistory(const QString& username)
 {
+    QElapsedTimer timer;
+    timer.start();
 
     std::vector<std::string> movesVector;
     for (char cell : board) {
@@ -143,5 +168,7 @@ void twoplayer::saveGameHistory(const QString& username)
     // Use username to save history in a user-specific way
     GameHistory gameHistory("game_history.txt");
     gameHistory.saveGameHistory(username.toStdString(), "user2", winner.toStdString(), movesVector);
-}
 
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "Saving game history took" << elapsed << "nanoseconds";
+}

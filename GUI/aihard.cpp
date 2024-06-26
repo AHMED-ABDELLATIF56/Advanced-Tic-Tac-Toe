@@ -3,6 +3,8 @@
 #include <QMessageBox>
 #include <cstdlib>
 #include <ctime>
+#include <QElapsedTimer>
+#include <QDebug>
 #include "database.h"
 
 aihard::aihard(QWidget *parent, QString username)
@@ -11,6 +13,9 @@ aihard::aihard(QWidget *parent, QString username)
     username(username),
     playerX(true)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     ui->setupUi(this);
 
     // Initialize pushButton_array with UI buttons
@@ -28,6 +33,9 @@ aihard::aihard(QWidget *parent, QString username)
 
     // Player always starts first
     playerX = true;
+
+    qint64 initTime = timer.nsecsElapsed();
+    qDebug() << "AIHard initialization took" << initTime << "nanoseconds";
 }
 
 aihard::~aihard()
@@ -37,11 +45,14 @@ aihard::~aihard()
 
 void aihard::handlePlayerMove(int index)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     QPushButton* button = pushButton_array[index];
     if (!button->text().isEmpty()) return; // If the button already has text, do nothing
 
-    button->setText( "X"); // Set 'X' or 'O' based on player's turn
-    board[index] = 'X' ; // Update the board state
+    button->setText("X"); // Set 'X' or 'O' based on player's turn
+    board[index] = 'X'; // Update the board state
     playerX = !playerX; // Toggle player turn
 
     checkGameStatus(); // Check game status after each move
@@ -50,21 +61,33 @@ void aihard::handlePlayerMove(int index)
     if (!checkWinner('X') && !checkWinner('O') && !isBoardFull()) {
         aiMove(); // AI move after player's move
     }
+
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "Player move took" << elapsed << "nanoseconds";
 }
 
 void aihard::aiMove()
 {
+    QElapsedTimer timer;
+    timer.start();
+
     int bestMove = findBestMove(); // Determine AI's move
     QPushButton* button = pushButton_array[bestMove];
-    button->setText( "O"); // Set 'X' or 'O' based on AI's turn
+    button->setText("O"); // Set 'X' or 'O' based on AI's turn
     board[bestMove] = 'O'; // Update the board state
     playerX = !playerX; // Toggle player turn
 
     checkGameStatus(); // Check game status after AI's move
+
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "AI move took" << elapsed << "nanoseconds";
 }
 
 void aihard::checkGameStatus()
 {
+    QElapsedTimer timer;
+    timer.start();
+
     if (checkWinner('X')) {
         QMessageBox::information(this, "Game Over", "Player X wins!");
         saveGameHistory(username); // Save game history
@@ -78,6 +101,9 @@ void aihard::checkGameStatus()
         saveGameHistory(username); // Save game history
         resetGame();
     }
+
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "Game status check took" << elapsed << "nanoseconds";
 }
 
 bool aihard::checkWinner(char player)
@@ -121,6 +147,9 @@ int aihard::findBestMove()
 
 void aihard::resetGame()
 {
+    QElapsedTimer timer;
+    timer.start();
+
     disconnectButtons(); // Disconnect button signals
 
     // Clear all buttons and reset board and player turn
@@ -131,6 +160,9 @@ void aihard::resetGame()
     playerX = true; // Assuming X starts first
 
     connectButtons(); // Reconnect button signals
+
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "Game reset took" << elapsed << "nanoseconds";
 }
 
 void aihard::connectButtons()
@@ -151,6 +183,8 @@ void aihard::disconnectButtons()
 
 void aihard::saveGameHistory(const QString& username)
 {
+    QElapsedTimer timer;
+    timer.start();
 
     std::vector<std::string> movesVector;
     for (char cell : board) {
@@ -173,4 +207,7 @@ void aihard::saveGameHistory(const QString& username)
     // Use username to save history in a user-specific way
     GameHistory gameHistory("game_history.txt");
     gameHistory.saveGameHistory(username.toStdString(), "Computer_easy", winner.toStdString(), movesVector);
+
+    qint64 elapsed = timer.nsecsElapsed();
+    qDebug() << "Saving game history took" << elapsed << "nanoseconds";
 }
