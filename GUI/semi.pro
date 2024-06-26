@@ -13,6 +13,7 @@ SOURCES += \
     database.cpp \
     dialog.cpp \
     gamehistory.cpp \
+    gamehistorydialog.cpp \
     hard1.cpp \
     login.cpp \
     main.cpp \
@@ -24,7 +25,7 @@ HEADERS += \
     aihard.h \
     database.h \
     dialog.h \
-    gamehistory.h \
+    gamehistorydialog.h \
     hard1.h \
     login.h \
     mainwindow.h \
@@ -34,6 +35,7 @@ HEADERS += \
 FORMS += \
     aihard.ui \
     dialog.ui \
+    gamehistorydialog.ui \
     hard1.ui \
     login.ui \
     mainwindow.ui \

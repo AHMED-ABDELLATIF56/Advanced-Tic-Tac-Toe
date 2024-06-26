@@ -45,7 +45,9 @@ constexpr auto qt_meta_stringdata_CLASSaihardENDCLASS = QtMocHelpers::stringData
     "player",
     "isBoardFull",
     "findBestMove",
-    "resetGame"
+    "resetGame",
+    "saveGameHistory",
+    "username"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -58,7 +60,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSaihardENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -66,13 +68,14 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSaihardENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   56,    2, 0x08,    1 /* Private */,
-       4,    0,   59,    2, 0x08,    3 /* Private */,
-       5,    0,   60,    2, 0x08,    4 /* Private */,
-       6,    1,   61,    2, 0x08,    5 /* Private */,
-       8,    0,   64,    2, 0x08,    7 /* Private */,
-       9,    0,   65,    2, 0x08,    8 /* Private */,
-      10,    0,   66,    2, 0x08,    9 /* Private */,
+       1,    1,   62,    2, 0x08,    1 /* Private */,
+       4,    0,   65,    2, 0x08,    3 /* Private */,
+       5,    0,   66,    2, 0x08,    4 /* Private */,
+       6,    1,   67,    2, 0x08,    5 /* Private */,
+       8,    0,   70,    2, 0x08,    7 /* Private */,
+       9,    0,   71,    2, 0x08,    8 /* Private */,
+      10,    0,   72,    2, 0x08,    9 /* Private */,
+      11,    1,   73,    2, 0x08,   10 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Int,    3,
@@ -82,6 +85,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSaihardENDCLASS[] = {
     QMetaType::Bool,
     QMetaType::Int,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   12,
 
        0        // eod
 };
@@ -110,7 +114,10 @@ Q_CONSTINIT const QMetaObject aihard::staticMetaObject = { {
         // method 'findBestMove'
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'resetGame'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'saveGameHistory'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>
     >,
     nullptr
 } };
@@ -131,6 +138,7 @@ void aihard::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 5: { int _r = _t->findBestMove();
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 6: _t->resetGame(); break;
+        case 7: _t->saveGameHistory((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     }
@@ -155,13 +163,13 @@ int aihard::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 8)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 7;
+        _id -= 8;
     }
     return _id;
 }

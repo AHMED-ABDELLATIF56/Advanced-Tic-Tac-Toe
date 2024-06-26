@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QVector>
 #include <QPushButton>
+#include "database.h"
 
 namespace Ui {
 class medium;
@@ -14,7 +15,7 @@ class medium : public QDialog
     Q_OBJECT
 
 public:
-    explicit medium(QWidget *parent = nullptr);
+    explicit medium(QWidget *parent = nullptr,QString username = "");
     ~medium();
 
 private slots:
@@ -25,16 +26,14 @@ private slots:
     bool isBoardFull();
     int findBestMove();
     void resetGame();
-
+    void saveGameHistory(const QString& username);
 private:
     Ui::medium *ui;
+     QString username;
     QVector<QPushButton*> pushButton_array;
     QVector<char> board;
     bool playerX;
-
-    // These functions are no longer needed, hence commented out in the source file
-    // void connectButtons();
-    // void disconnectButtons();
+     Database *database;
 };
 
 #endif // MEDIUM_H

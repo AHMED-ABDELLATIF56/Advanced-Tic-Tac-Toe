@@ -5,7 +5,6 @@
 #include <QPushButton>
 #include <QVector>
 #include "database.h"
-#include "gamehistory.h"
 
 namespace Ui {
 class hard1;
@@ -16,7 +15,7 @@ class hard1 : public QDialog
     Q_OBJECT
 
 public:
-    explicit hard1(QWidget *parent = nullptr);
+    explicit hard1(QWidget *parent = nullptr,QString username = "");
     ~hard1();
     int findBestMove();
 
@@ -28,13 +27,14 @@ private slots:
     bool isBoardFull();
     int minimax(char player, int depth, int alpha, int beta, bool maximizingPlayer);
     void resetGame(); // Declaration of resetGame function
-    void saveGameHistory();
+    void saveGameHistory(const QString& username);
 private:
     Ui::hard1 *ui;
+     QString username;
     QVector<QPushButton*> pushButton_array;
     QVector<char> board;
     bool playerX; // true for Player X, false for Player O
-    GameHistory *gameHistory;
+
     Database *database;
 };
 

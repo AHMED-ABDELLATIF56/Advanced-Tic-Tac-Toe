@@ -16,8 +16,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-signals:
-    void usernameEntered(const QString& username); // Signal to emit the entered username
+    QString getUsername() const;
+
+
 
 
 private slots:

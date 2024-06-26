@@ -5,9 +5,10 @@
 #include <cstdlib>
 #include <ctime>
 
-medium::medium(QWidget *parent) :
+medium::medium(QWidget *parent, QString username) :
     QDialog(parent),
     ui(new Ui::medium),
+    username(username),
     playerX(true)
 {
     ui->setupUi(this);
@@ -53,8 +54,8 @@ void medium::handlePlayerMove(int index)
     QPushButton* button = pushButton_array[index];
     if (!button->text().isEmpty()) return; // If the button already has text, do nothing
 
-    button->setText(playerX ? "X" : "O"); // Set 'X' or 'O' based on player's turn
-    board[index] = playerX ? 'X' : 'O'; // Update the board state
+    button->setText( "X" ); // Set 'X' or 'O' based on player's turn
+    board[index] =  'X'; // Update the board state
     playerX = !playerX; // Toggle player turn
 
     checkGameStatus(); // Check game status after each move
@@ -73,8 +74,8 @@ void medium::aiMove()
         return;
     }
     QPushButton* button = pushButton_array[bestMove];
-    button->setText(playerX ? "X" : "O"); // Set 'X' or 'O' based on AI's turn
-    board[bestMove] = playerX ? 'X' : 'O'; // Update the board state
+    button->setText( "O"); // Set 'X' or 'O' based on AI's turn
+    board[bestMove] =  'O'; // Update the board state
     playerX = !playerX; // Toggle player turn
 
     checkGameStatus(); // Check game status after AI's move
@@ -84,16 +85,18 @@ void medium::checkGameStatus()
 {
     if (checkWinner('X')) {
         QMessageBox::information(this, "Game Over", "Player X wins!");
+        saveGameHistory(username); // Save game history
         resetGame();
     } else if (checkWinner('O')) {
         QMessageBox::information(this, "Game Over", "Player O wins!");
+        saveGameHistory(username); // Save game history
         resetGame();
     } else if (isBoardFull()) {
         QMessageBox::information(this, "Game Over", "It's a tie!");
+        saveGameHistory(username); // Save game history
         resetGame();
     }
 }
-
 bool medium::checkWinner(char player)
 {
     // Check all winning conditions
@@ -147,4 +150,29 @@ void medium::resetGame()
         board[i] = ' '; // Reset board state
     }
     playerX = true; // Assuming X starts first
+}
+void medium::saveGameHistory(const QString& username)
+{
+
+    std::vector<std::string> movesVector;
+    for (char cell : board) {
+        if (cell != ' ') {
+            movesVector.push_back(std::string(1, cell));
+        } else {
+            movesVector.push_back("-");
+        }
+    }
+
+    QString winner;
+    if (checkWinner('X')) {
+        winner = username;
+    } else if (checkWinner('O')) {
+        winner = "Computer_medium";
+    } else {
+        winner = "Tie";
+    }
+
+    // Use username to save history in a user-specific way
+    GameHistory gameHistory("game_history.txt");
+    gameHistory.saveGameHistory(username.toStdString(), "Computer_medium", winner.toStdString(), movesVector);
 }

@@ -1,20 +1,24 @@
 #include "hard1.h"
+#include "gamehistorydialog.h"
 #include "ui_hard1.h"
 #include "database.h"
 #include "gamehistory.h"
 #include <QMessageBox>
 #include <cstdlib>
 #include <ctime>
+#include <string>
 
-hard1::hard1(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::hard1),
-    playerX(true)
+
+
+hard1::hard1(QWidget *parent, QString username) :
+    QDialog(parent)
+    , ui(new Ui::hard1)
+    ,username(username)
+    ,playerX(true)
 {
     ui->setupUi(this);
 
-    gameHistory = new GameHistory("gamehistory.txt", this);
-    // Initialize pushButton_array with UI buttons
+
     pushButton_array = {
         ui->pushButton, ui->pushButton_2, ui->pushButton_3,
         ui->pushButton_4, ui->pushButton_5, ui->pushButton_6,
@@ -44,8 +48,8 @@ void hard1::handlePlayerMove(int index)
     QPushButton* button = pushButton_array[index];
     if (!button->text().isEmpty()) return; // If the button already has text, do nothing
 
-    button->setText(playerX ? "X" : "O"); // Set 'X' or 'O' based on player's turn
-    board[index] = playerX ? 'X' : 'O'; // Update the board state
+    button->setText( "X" ); // Set 'X' or 'O' based on player's turn
+    board[index] = 'X' ; // Update the board state
     playerX = !playerX; // Toggle player turn
 
     checkGameStatus(); // Check game status after each move
@@ -60,8 +64,8 @@ void hard1::aiMove()
 {
     int bestMove = findBestMove(); // Determine AI's move
     QPushButton* button = pushButton_array[bestMove];
-    button->setText(playerX ? "X" : "O"); // Set 'X' or 'O' based on AI's turn
-    board[bestMove] = playerX ? 'X' : 'O'; // Update the board state
+    button->setText("O"); // Set 'X' or 'O' based on AI's turn
+    board[bestMove] = 'O'; // Update the board state
     playerX = !playerX; // Toggle player turn
 
     checkGameStatus(); // Check game status after AI's move
@@ -71,12 +75,15 @@ void hard1::checkGameStatus()
 {
     if (checkWinner('X')) {
         QMessageBox::information(this, "Game Over", "Player X wins!");
+        saveGameHistory(username); // Save game history
         resetGame();
     } else if (checkWinner('O')) {
         QMessageBox::information(this, "Game Over", "Player O wins!");
+        saveGameHistory(username); // Save game history
         resetGame();
     } else if (isBoardFull()) {
         QMessageBox::information(this, "Game Over", "It's a tie!");
+        saveGameHistory(username); // Save game history
         resetGame();
     }
 }
@@ -176,21 +183,30 @@ void hard1::resetGame()
     }
     playerX = true; // Assuming X starts first
 }
-void hard1::saveGameHistory()
+
+void hard1::saveGameHistory(const QString& username)
 {
-    QString moves;
+
+    std::vector<std::string> movesVector;
     for (char cell : board) {
-        moves.append(cell);
+        if (cell != ' ') {
+            movesVector.push_back(std::string(1, cell));
+        } else {
+            movesVector.push_back("-");
+        }
     }
 
     QString winner;
     if (checkWinner('X')) {
-        winner = "player x";
+        winner = username;
     } else if (checkWinner('O')) {
-        winner = "player o";
+        winner = "Computer_hard";
     } else {
         winner = "Tie";
     }
 
-    gameHistory->saveGameHistory(winner, moves);
+    // Use username to save history in a user-specific way
+    GameHistory gameHistory("game_history.txt");
+    gameHistory.saveGameHistory(username.toStdString(), "Computer_hard", winner.toStdString(), movesVector);
 }
+

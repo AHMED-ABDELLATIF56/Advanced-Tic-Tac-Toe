@@ -38,7 +38,7 @@ void MainWindow::on_pushButton_1_clicked()
 
     // Attempt to sign in with provided username and password
     if (database->signIn(username, password)) {
-        emit usernameEntered(username);
+
         // Sign-in successful, open main application window (Dialog1)
         Dialog1 *dialog1 = new Dialog1(this);
         dialog1->show();
@@ -54,4 +54,7 @@ void MainWindow::handleRegistrationSuccess()
     qDebug() << "Registration successful!";
     // Handle post-registration logic here if needed
 }
-
+QString MainWindow::getUsername() const
+{
+    return ui->lineEdit_username->text();
+}

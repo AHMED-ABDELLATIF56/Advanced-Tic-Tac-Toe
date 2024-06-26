@@ -2,6 +2,11 @@
 #define TWOPLAYER_H
 
 #include <QDialog>
+#include <QPushButton>
+#include <vector>
+#include <QString>
+#include <array>
+#include <QVector>
 
 namespace Ui {
 class twoplayer;
@@ -12,29 +17,27 @@ class twoplayer : public QDialog
     Q_OBJECT
 
 public:
-    explicit twoplayer(QWidget *parent = nullptr);
+    explicit twoplayer(QWidget *parent = nullptr,QString username = "");
     ~twoplayer();
 
 private slots:
-    void on_pushButton_1_clicked();
-    void on_pushButton_2_clicked();
-    void on_pushButton_3_clicked();
-    void on_pushButton_4_clicked();
-    void on_pushButton_5_clicked();
-    void on_pushButton_6_clicked();
-    void on_pushButton_7_clicked();
-    void on_pushButton_8_clicked();
-    void on_pushButton_9_clicked();
-    void handleButtonClick(QPushButton *button);
-    void checkWinCondition();
-    void resetGame();
+    void handlePlayerMove(int index);
 
 private:
     Ui::twoplayer *ui;
+    QString username;
     bool playerX;
+    std::array<QPushButton*, 9> pushButton_array;
+    QVector<char> board;
 
-    void disconnectButtons();
+    void checkGameStatus();
+    bool checkWinner(char player);
+    bool isBoardFull();
+    void resetGame();
     void connectButtons();
+    void disconnectButtons();
+    void saveGameHistory(const QString& username);
+
 };
 
 #endif // TWOPLAYER_H

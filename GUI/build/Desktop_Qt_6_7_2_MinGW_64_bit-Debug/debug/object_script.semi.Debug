@@ -2,6 +2,7 @@ debug/aihard.o
 debug/database.o
 debug/dialog.o
 debug/gamehistory.o
+debug/gamehistorydialog.o
 debug/hard1.o
 debug/login.o
 debug/main.o
@@ -11,7 +12,7 @@ debug/twoplayer.o
 debug/moc_aihard.o
 debug/moc_database.o
 debug/moc_dialog.o
-debug/moc_gamehistory.o
+debug/moc_gamehistorydialog.o
 debug/moc_hard1.o
 debug/moc_login.o
 debug/moc_mainwindow.o

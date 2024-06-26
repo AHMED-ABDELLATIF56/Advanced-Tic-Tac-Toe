@@ -91,7 +91,7 @@ public:
 
     void retranslateUi(QDialog *Dialog1)
     {
-        Dialog1->setWindowTitle(QCoreApplication::translate("Dialog1", "Dialog", nullptr));
+        Dialog1->setWindowTitle(QCoreApplication::translate("Dialog1", "Choose mode", nullptr));
         label->setText(QCoreApplication::translate("Dialog1", "Against AI", nullptr));
         pushButton_AI_easy->setText(QCoreApplication::translate("Dialog1", "easy", nullptr));
         pushButton_AI_medium->setText(QCoreApplication::translate("Dialog1", "medium", nullptr));

@@ -1,31 +1,30 @@
+/*
 #ifndef GAMEHISTORY_H
 #define GAMEHISTORY_H
 
-#include <QObject>
+#include <QDialog>
 #include <QString>
-#include <QVector>
+#include "database.h"
 
-struct GameRecord {
-    QString player1;
-    QString player2;
-    QString winner;
-    QVector<QString> moves;
-};
+namespace Ui {
+class GameHistory;
+}
 
-class GameHistory : public QObject {
+class GameHistory : public QDialog
+{
     Q_OBJECT
 
 public:
-    explicit GameHistory(const QString& gameHistoryFile, QObject *parent = nullptr);
-
-    void saveGameHistory( const QString& winner, const QString& moves);
-    QVector<GameRecord> parseGameHistory();
-    QVector<GameRecord> viewGameHistory(const QString& username);
-    void displayBoard(const QVector<QString>& moves);
+    explicit GameHistory(QWidget *parent = nullptr,const QString& gamehistory_File = "game_history.txt", QString username = "");
+    ~GameHistory();
 
 private:
-    QString gameHistoryFile;
+    Ui::GameHistory *ui;
+    QString username;
+
+    GameHistory *gameHistory;
+    void displayHistory();
 };
 
 #endif // GAMEHISTORY_H
-
+*/

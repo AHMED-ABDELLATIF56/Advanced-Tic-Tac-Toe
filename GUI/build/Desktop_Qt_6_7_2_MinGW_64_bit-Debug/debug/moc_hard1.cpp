@@ -50,7 +50,8 @@ constexpr auto qt_meta_stringdata_CLASShard1ENDCLASS = QtMocHelpers::stringData(
     "beta",
     "maximizingPlayer",
     "resetGame",
-    "saveGameHistory"
+    "saveGameHistory",
+    "username"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -78,7 +79,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASShard1ENDCLASS[] = {
        8,    0,   70,    2, 0x08,    7 /* Private */,
        9,    5,   71,    2, 0x08,    8 /* Private */,
       14,    0,   82,    2, 0x08,   14 /* Private */,
-      15,    0,   83,    2, 0x08,   15 /* Private */,
+      15,    1,   83,    2, 0x08,   15 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Int,    3,
@@ -88,7 +89,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASShard1ENDCLASS[] = {
     QMetaType::Bool,
     QMetaType::Int, QMetaType::Char, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Bool,    7,   10,   11,   12,   13,
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   16,
 
        0        // eod
 };
@@ -124,7 +125,8 @@ Q_CONSTINIT const QMetaObject hard1::staticMetaObject = { {
         // method 'resetGame'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'saveGameHistory'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>
     >,
     nullptr
 } };
@@ -145,7 +147,7 @@ void hard1::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         case 5: { int _r = _t->minimax((*reinterpret_cast< std::add_pointer_t<char>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<bool>>(_a[5])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 6: _t->resetGame(); break;
-        case 7: _t->saveGameHistory(); break;
+        case 7: _t->saveGameHistory((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     }
