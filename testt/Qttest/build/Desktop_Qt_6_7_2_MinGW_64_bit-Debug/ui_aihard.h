@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QPushButton>
 
@@ -21,6 +22,7 @@ class Ui_aihard
 {
 public:
     QGroupBox *groupBox;
+    QGridLayout *gridLayout;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
     QPushButton *pushButton_3;
@@ -38,34 +40,54 @@ public:
         aihard->resize(721, 542);
         groupBox = new QGroupBox(aihard);
         groupBox->setObjectName("groupBox");
-        groupBox->setGeometry(QRect(130, 60, 471, 381));
+        groupBox->setGeometry(QRect(130, 60, 421, 361));
+        gridLayout = new QGridLayout(groupBox);
+        gridLayout->setObjectName("gridLayout");
         pushButton = new QPushButton(groupBox);
         pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(30, 60, 93, 29));
+
+        gridLayout->addWidget(pushButton, 0, 0, 1, 1);
+
         pushButton_2 = new QPushButton(groupBox);
         pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setGeometry(QRect(160, 60, 93, 29));
+
+        gridLayout->addWidget(pushButton_2, 0, 1, 1, 1);
+
         pushButton_3 = new QPushButton(groupBox);
         pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setGeometry(QRect(280, 60, 93, 29));
+
+        gridLayout->addWidget(pushButton_3, 0, 2, 1, 1);
+
         pushButton_4 = new QPushButton(groupBox);
         pushButton_4->setObjectName("pushButton_4");
-        pushButton_4->setGeometry(QRect(50, 150, 93, 29));
+
+        gridLayout->addWidget(pushButton_4, 1, 0, 1, 1);
+
         pushButton_5 = new QPushButton(groupBox);
         pushButton_5->setObjectName("pushButton_5");
-        pushButton_5->setGeometry(QRect(180, 150, 93, 29));
+
+        gridLayout->addWidget(pushButton_5, 1, 1, 1, 1);
+
         pushButton_6 = new QPushButton(groupBox);
         pushButton_6->setObjectName("pushButton_6");
-        pushButton_6->setGeometry(QRect(300, 150, 93, 29));
+
+        gridLayout->addWidget(pushButton_6, 1, 2, 1, 1);
+
         pushButton_7 = new QPushButton(groupBox);
         pushButton_7->setObjectName("pushButton_7");
-        pushButton_7->setGeometry(QRect(60, 220, 93, 29));
+
+        gridLayout->addWidget(pushButton_7, 2, 0, 1, 1);
+
         pushButton_8 = new QPushButton(groupBox);
         pushButton_8->setObjectName("pushButton_8");
-        pushButton_8->setGeometry(QRect(170, 220, 93, 29));
+
+        gridLayout->addWidget(pushButton_8, 2, 1, 1, 1);
+
         pushButton_9 = new QPushButton(groupBox);
         pushButton_9->setObjectName("pushButton_9");
-        pushButton_9->setGeometry(QRect(290, 210, 93, 29));
+
+        gridLayout->addWidget(pushButton_9, 2, 2, 1, 1);
+
 
         retranslateUi(aihard);
 
@@ -75,7 +97,7 @@ public:
     void retranslateUi(QDialog *aihard)
     {
         aihard->setWindowTitle(QCoreApplication::translate("aihard", "Dialog", nullptr));
-        groupBox->setTitle(QCoreApplication::translate("aihard", "GroupBox", nullptr));
+        groupBox->setTitle(QCoreApplication::translate("aihard", "AI_Easy", nullptr));
         pushButton->setText(QString());
         pushButton_2->setText(QString());
         pushButton_3->setText(QString());

@@ -6,31 +6,31 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>412</width>
+    <height>334</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Choose mode</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>20</y>
+     <x>50</x>
+     <y>80</y>
      <width>191</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>do you want Ttoplay with AI</string>
+    <string>Against AI</string>
    </property>
   </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>60</y>
+     <x>180</x>
+     <y>40</y>
      <width>95</width>
      <height>103</height>
     </rect>
@@ -40,6 +40,13 @@
      <widget class="QPushButton" name="pushButton_AI_easy">
       <property name="text">
        <string>easy</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_AI_medium">
+      <property name="text">
+       <string>medium</string>
       </property>
      </widget>
     </item>
@@ -55,9 +62,9 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>190</y>
-     <width>172</width>
+     <x>40</x>
+     <y>170</y>
+     <width>311</width>
      <height>31</height>
     </rect>
    </property>
@@ -65,7 +72,7 @@
     <item>
      <widget class="QLabel" name="label_2">
       <property name="text">
-       <string>two player</string>
+       <string>Two players</string>
       </property>
      </widget>
     </item>
@@ -81,7 +88,7 @@
   <widget class="QPushButton" name="pushButton_history">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>150</x>
      <y>240</y>
      <width>93</width>
      <height>29</height>

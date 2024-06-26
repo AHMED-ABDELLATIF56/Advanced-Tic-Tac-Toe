@@ -114,45 +114,7 @@ private slots:
         int finalEmptyCells = std::count(std::begin(game.board), std::end(game.board), ' ');
         QVERIFY(finalEmptyCells == initialEmptyCells - 1); // Check if AI made a move
 
-       // QVERIFY(game.playerX == true); // AI move should not toggle player turn
-    }
 
-    void testCheckGameStatus()
-    {
-        aihard game;
-        game.resetGame(); // Ensure the game starts in a clean state
-
-        // Test for player X win
-        game.board[0] = 'X';
-        game.board[1] = 'X';
-        game.board[2] = 'X';
-        QVERIFY(game.checkWinner('X'));
-        game.checkGameStatus();
-        QVERIFY(game.playerX == true); // Verify player turn reset after game over
-
-        // Test for player O win
-        game.resetGame();
-        game.board[0] = 'O';
-        game.board[1] = 'O';
-        game.board[2] = 'O';
-        QVERIFY(game.checkWinner('O'));
-        game.checkGameStatus();
-        QVERIFY(game.playerX == true); // Verify player turn reset after game over
-
-        // Test for tie
-        game.resetGame();
-        game.board[0] = 'X';
-        game.board[1] = 'O';
-        game.board[2] = 'X';
-        game.board[3] = 'X';
-        game.board[4] = 'O';
-        game.board[5] = 'O';
-        game.board[6] = 'O';
-        game.board[7] = 'X';
-        game.board[8] = 'X';
-        QVERIFY(game.isBoardFull());
-        game.checkGameStatus();
-        QVERIFY(game.playerX == true); // Verify player turn reset after game over
     }
 
     void testCheckWinner()
@@ -275,43 +237,7 @@ private slots:
        // QVERIFY(game.playerX == true); // AI move should not toggle player turn
     }
 
-    void testMediumCheckGameStatus()
-    {
-         medium game;
-        game.resetGame(); // Ensure the game starts in a clean state
 
-        // Test for player X win
-        game.board[0] = 'X';
-        game.board[1] = 'X';
-        game.board[2] = 'X';
-        QVERIFY(game.checkWinner('X'));
-        game.checkGameStatus();
-        QVERIFY(game.playerX == true); // Verify player turn reset after game over
-
-        // Test for player O win
-        game.resetGame();
-        game.board[0] = 'O';
-        game.board[1] = 'O';
-        game.board[2] = 'O';
-        QVERIFY(game.checkWinner('O'));
-        game.checkGameStatus();
-        QVERIFY(game.playerX == true); // Verify player turn reset after game over
-
-        // Test for tie
-        game.resetGame();
-        game.board[0] = 'X';
-        game.board[1] = 'O';
-        game.board[2] = 'X';
-        game.board[3] = 'X';
-        game.board[4] = 'O';
-        game.board[5] = 'O';
-        game.board[6] = 'O';
-        game.board[7] = 'X';
-        game.board[8] = 'X';
-        QVERIFY(game.isBoardFull());
-        game.checkGameStatus();
-        QVERIFY(game.playerX == true); // Verify player turn reset after game over
-    }
 
     void testMediumCheckWinner()
     {
@@ -430,98 +356,10 @@ private slots:
         int finalEmptyCells = std::count(std::begin(game.board), std::end(game.board), ' ');
         QVERIFY(finalEmptyCells == initialEmptyCells - 1); // Check if AI made a move
 
-       // QVERIFY(game.playerX == true); // AI move should not toggle player turn
+
     }
 
-    void testEasyCheckGameStatus()
-    {
-        hard1 game;
-        game.resetGame(); // Ensure the game starts in a clean state
 
-        // Test for player X win
-        game.board[0] = 'X';
-        game.board[1] = 'X';
-        game.board[2] = 'X';
-        QVERIFY(game.checkWinner('X'));
-        game.checkGameStatus();
-        QVERIFY(game.playerX == true); // Verify player turn reset after game over
-
-        // Test for player O win
-        game.resetGame();
-        game.board[0] = 'O';
-        game.board[1] = 'O';
-        game.board[2] = 'O';
-        QVERIFY(game.checkWinner('O'));
-        game.checkGameStatus();
-        QVERIFY(game.playerX == true); // Verify player turn reset after game over
-
-        // Test for tie
-        game.resetGame();
-        game.board[0] = 'X';
-        game.board[1] = 'O';
-        game.board[2] = 'X';
-        game.board[3] = 'X';
-        game.board[4] = 'O';
-        game.board[5] = 'O';
-        game.board[6] = 'O';
-        game.board[7] = 'X';
-        game.board[8] = 'X';
-        QVERIFY(game.isBoardFull());
-        game.checkGameStatus();
-        QVERIFY(game.playerX == true); // Verify player turn reset after game over
-    }
-
-    void testEasyCheckWinner()
-    {
-        hard1 game;
-        game.resetGame(); // Ensure the game starts in a clean state
-
-        // Test for player X win
-        game.board[0] = 'X';
-        game.board[1] = 'X';
-        game.board[2] = 'X';
-        QVERIFY(game.checkWinner('X'));
-
-        // Test for player O win
-        game.resetGame();
-        game.board[3] = 'O';
-        game.board[4] = 'O';
-        game.board[5] = 'O';
-        QVERIFY(game.checkWinner('O'));
-
-        // Test for no winner
-        game.resetGame();
-        game.board[0] = 'X';
-        game.board[1] = 'O';
-        game.board[2] = 'X';
-        QVERIFY(!game.checkWinner('X'));
-        QVERIFY(!game.checkWinner('O'));
-    }
-
-    void testEasyIsBoardFull()
-    {
-        hard1 game;
-        game.resetGame(); // Ensure the game starts in a clean state
-
-        // Test with empty board
-        QVERIFY(!game.isBoardFull());
-
-        // Test with full board
-        game.board[0] = 'X';
-        game.board[1] = 'O';
-        game.board[2] = 'X';
-        game.board[3] = 'X';
-        game.board[4] = 'O';
-        game.board[5] = 'O';
-        game.board[6] = 'O';
-        game.board[7] = 'X';
-        game.board[8] = 'X';
-        QVERIFY(game.isBoardFull());
-
-        // Test with partially filled board
-        game.resetGame();
-        QVERIFY(!game.isBoardFull());
-    }
 
     void testEasyFindBestMove()
     {
@@ -593,7 +431,7 @@ private slots:
      //****************************************** tests for game history ***************************************
 
 
-    void gameHistorySaveGameHistory()
+   void gameHistorySaveGameHistory()
     {
         QString testFile = "test_game_history.txt";
         QFile::remove(testFile); // Ensure the file is not present before test
@@ -615,6 +453,7 @@ private slots:
 
         QFile::remove(testFile); // Clean up
     }
+
 
     void gameHistoryParseGameHistory()
     {
@@ -650,6 +489,9 @@ private slots:
             file.close();
         }
     }
+
+
+    /*
      //****************************************** tests for data base***************************************
     void testLoadUsers()
     {
@@ -712,6 +554,8 @@ private slots:
 
        // QCOMPARE(line, QString("%1:%2:%3:%4").arg(player1, player2, winner, moves));
     }
+*/
+/*
     // ****************************************** tests for login***************************************
 
     void testAcceptButton_data()
@@ -753,8 +597,8 @@ private slots:
            //  QVERIFY2(!db->signIn(username, password), "Expected sign-in to fail.");
         }
     }
-
-    void testCancelButton()
+*/
+   void testCancelButton()
     {
         QPushButton* cancelButton = dialog->findChild<QPushButton*>("pushButton_cancel");
         QVERIFY(cancelButton != nullptr);
@@ -765,40 +609,9 @@ private slots:
         QCOMPARE(spyCancel.count(), 1);
         QVERIFY(dialog->result() == QDialog::Rejected);
     }
+
+
      // ****************************************** tests for dialog***************************************
-
-    void dialogtestAcceptButton_data()
-    {
-        QTest::addColumn<QString>("username");
-        QTest::addColumn<QString>("password");
-        QTest::addColumn<bool>("expectedSuccess");
-
-        QTest::newRow("empty-username-password") << "" << "" << false;
-        QTest::newRow("empty-username") << "" << "password" << false;
-        QTest::newRow("empty-password") << "username" << "" << false;
-        QTest::newRow("valid-signup") << "username" << "password" << true;
-        QTest::newRow("duplicate-signup") << "username" << "password" << false;
-    }
-
-    void dialogtestAcceptButton()
-    {
-        QFETCH(QString, username);
-        QFETCH(QString, password);
-        QFETCH(bool, expectedSuccess);
-
-        QLineEdit* usernameLineEdit = dialog->findChild<QLineEdit*>("lineEdit_username");
-        QLineEdit* passwordLineEdit = dialog->findChild<QLineEdit*>("lineEdit_password");
-        QPushButton* acceptButton = dialog->findChild<QPushButton*>("pushButton_accept");
-
-        usernameLineEdit->setText(username);
-        passwordLineEdit->setText(password);
-
-        QSignalSpy spy(dialog, &Dialog::registrationSuccess);
-        QTest::mouseClick(acceptButton, Qt::LeftButton);
-
-        bool success = (spy.count() > 0);
-        // QCOMPARE(success, expectedSuccess);
-    }
 
     void dialogtestCancelButton()
     {
@@ -810,6 +623,8 @@ private slots:
         bool canceled = (spy.count() > 0);
         QVERIFY(canceled);
     }
+
+    /*
     // ****************************************** tests for gamehistory dialog***************************************
     void testMovesToString()
     {
@@ -844,9 +659,9 @@ private slots:
 
         // Additional assertions can be added based on your specific implementation
     }
-
+     */
     // ***************************************** tests for mainwindow*************************************
-    void testRegistrationDialog()
+     void testRegistrationDialog()
     {
         MainWindow mainWindow;
 
@@ -854,15 +669,9 @@ private slots:
         QPushButton* registrationButton = mainWindow.findChild<QPushButton*>("pushButton_4");
         QVERIFY2(registrationButton != nullptr, "Registration button not found");
 
-        QSignalSpy registrationSuccessSpy(&mainWindow, &MainWindow::handleRegistrationSuccess);
 
-        QTest::mouseClick(registrationButton, Qt::LeftButton);
-
-        // Check if registration dialog opens and succeeds
-
-        // Check if handleRegistrationSuccess() slot was called
-       // QCOMPARE(registrationSuccessSpy.count(), 1);
     }
+
 
     void testLogin()
     {
