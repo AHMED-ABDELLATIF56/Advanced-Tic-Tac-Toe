@@ -20,6 +20,7 @@ public:
 
 private slots:
     void on_pushButton_viewHistory_clicked();
+    void on_pushButton_replayGame_clicked();
 
 private:
     Ui::GameHistoryDialog *ui;
@@ -28,6 +29,7 @@ private:
     QString movesToString(const std::vector<std::string>& moves);
     void setupUIComponents();
     void displayHistory(const QString& username);
+    std::string removeCommas(const std::string& movesString);
 };
 
 #endif // GAMEHISTORYDIALOG_H

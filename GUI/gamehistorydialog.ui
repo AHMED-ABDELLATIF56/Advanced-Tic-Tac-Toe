@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>755</width>
-    <height>512</height>
+    <width>729</width>
+    <height>614</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -155,6 +155,19 @@
      <string>winner</string>
     </property>
    </column>
+  </widget>
+  <widget class="QPushButton" name="pushButton_replayGame">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>520</y>
+     <width>171</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>reply previous games</string>
+   </property>
   </widget>
  </widget>
  <resources/>

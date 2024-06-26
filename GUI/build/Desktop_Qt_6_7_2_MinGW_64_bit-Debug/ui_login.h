@@ -39,7 +39,7 @@ public:
     {
         if (Dialog1->objectName().isEmpty())
             Dialog1->setObjectName("Dialog1");
-        Dialog1->resize(412, 334);
+        Dialog1->resize(898, 500);
         label = new QLabel(Dialog1);
         label->setObjectName("label");
         label->setGeometry(QRect(50, 80, 191, 20));

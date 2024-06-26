@@ -19,6 +19,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     medium.cpp \
+    replaygamedialog.cpp \
     twoplayer.cpp
 
 HEADERS += \
@@ -30,6 +31,7 @@ HEADERS += \
     login.h \
     mainwindow.h \
     medium.h \
+    replaygamedialog.h \
     twoplayer.h
 
 FORMS += \
@@ -40,6 +42,7 @@ FORMS += \
     login.ui \
     mainwindow.ui \
     medium.ui \
+    replaygamedialog.ui \
     twoplayer.ui
 
 # Default rules for deployment.

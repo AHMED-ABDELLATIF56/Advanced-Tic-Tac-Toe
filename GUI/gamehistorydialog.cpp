@@ -1,9 +1,10 @@
-// gamehistorydialog.cpp
 #include "gamehistorydialog.h"
 #include "ui_gamehistorydialog.h"
+#include "replaygamedialog.h"
 #include <QMessageBox>
 #include <QTableWidgetItem>
 #include "database.h"
+#include <QStringList> // Include QStringList for split function
 
 GameHistoryDialog::GameHistoryDialog(QWidget *parent, QString username)
     : QDialog(parent)
@@ -14,6 +15,8 @@ GameHistoryDialog::GameHistoryDialog(QWidget *parent, QString username)
     ui->setupUi(this);
     setupUIComponents(); // Initialize UI components
     displayHistory(username);    // Display initial game history
+
+    connect(ui->pushButton_replayGame, &QPushButton::clicked, this, &GameHistoryDialog::on_pushButton_replayGame_clicked);
 }
 
 GameHistoryDialog::~GameHistoryDialog()
@@ -28,7 +31,6 @@ void GameHistoryDialog::setupUIComponents()
     ui->tableWidget_history->setColumnCount(4); // Assuming 4 columns: Player 1, Player 2, Winner, Moves
     QStringList headers = {"Player 1", "Player 2", "Winner", "Moves"};
     ui->tableWidget_history->setHorizontalHeaderLabels(headers);
-
 }
 
 void GameHistoryDialog::displayHistory(const QString& username) {
@@ -63,7 +65,7 @@ void GameHistoryDialog::displayHistory(const QString& username) {
         QTableWidgetItem *itemPlayer1 = new QTableWidgetItem(QString::fromStdString(record.player1));
         QTableWidgetItem *itemPlayer2 = new QTableWidgetItem(QString::fromStdString(record.player2));
         QTableWidgetItem *itemWinner = new QTableWidgetItem(QString::fromStdString(record.winner));
-        QTableWidgetItem *itemMoves = new QTableWidgetItem(GameHistoryDialog::movesToString(record.moves));
+        QTableWidgetItem *itemMoves = new QTableWidgetItem(movesToString(record.moves));
 
         ui->tableWidget_history->setItem(row, 0, itemPlayer1);
         ui->tableWidget_history->setItem(row, 1, itemPlayer2);
@@ -73,7 +75,6 @@ void GameHistoryDialog::displayHistory(const QString& username) {
         row++;
     }
 }
-
 
 void GameHistoryDialog::on_pushButton_viewHistory_clicked()
 {
@@ -91,3 +92,39 @@ QString GameHistoryDialog::movesToString(const std::vector<std::string>& moves) 
     }
     return result;
 }
+
+void GameHistoryDialog::on_pushButton_replayGame_clicked()
+{
+    // Get the selected row
+    int selectedRow = ui->tableWidget_history->currentRow();
+    if (selectedRow < 0) {
+        QMessageBox::warning(this, "Replay Game", "Please select a game to replay.");
+        return;
+    }
+
+    // Get the moves from the selected row
+    QTableWidgetItem* itemMoves = ui->tableWidget_history->item(selectedRow, 3);
+    if (!itemMoves) {
+        qDebug() << "No moves found in the selected row";
+        return;
+    }
+
+    // Extract moves string from QTableWidgetItem
+    QString movesString = itemMoves->text();
+    qDebug() << "Moves String:" << movesString;
+
+    // Split movesString into individual moves based on commas
+    QStringList moveList = movesString.split(',');
+
+    // Convert QStringList to vector of std::string
+    std::vector<std::string> moves;
+    for (const QString& move : moveList) {
+        moves.push_back(move.toStdString());
+    }
+
+    // Open the replay game dialog with the selected moves
+    ReplayGameDialog replayDialog(this);
+    replayDialog.setGameMoves(moves); // Set game moves in the dialog
+    replayDialog.exec();
+}
+

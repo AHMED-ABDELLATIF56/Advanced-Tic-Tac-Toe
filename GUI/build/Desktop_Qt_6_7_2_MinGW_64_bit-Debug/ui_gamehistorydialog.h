@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableWidget>
 
 QT_BEGIN_NAMESPACE
@@ -21,12 +22,13 @@ class Ui_GameHistoryDialog
 {
 public:
     QTableWidget *tableWidget_history;
+    QPushButton *pushButton_replayGame;
 
     void setupUi(QDialog *GameHistoryDialog)
     {
         if (GameHistoryDialog->objectName().isEmpty())
             GameHistoryDialog->setObjectName("GameHistoryDialog");
-        GameHistoryDialog->resize(755, 512);
+        GameHistoryDialog->resize(729, 614);
         tableWidget_history = new QTableWidget(GameHistoryDialog);
         if (tableWidget_history->columnCount() < 3)
             tableWidget_history->setColumnCount(3);
@@ -46,6 +48,9 @@ public:
         tableWidget_history->setColumnCount(3);
         tableWidget_history->horizontalHeader()->setVisible(true);
         tableWidget_history->horizontalHeader()->setCascadingSectionResizes(false);
+        pushButton_replayGame = new QPushButton(GameHistoryDialog);
+        pushButton_replayGame->setObjectName("pushButton_replayGame");
+        pushButton_replayGame->setGeometry(QRect(270, 520, 171, 41));
 
         retranslateUi(GameHistoryDialog);
 
@@ -61,6 +66,7 @@ public:
         ___qtablewidgetitem1->setText(QCoreApplication::translate("GameHistoryDialog", "second player", nullptr));
         QTableWidgetItem *___qtablewidgetitem2 = tableWidget_history->horizontalHeaderItem(2);
         ___qtablewidgetitem2->setText(QCoreApplication::translate("GameHistoryDialog", "winner", nullptr));
+        pushButton_replayGame->setText(QCoreApplication::translate("GameHistoryDialog", "reply previous games", nullptr));
     } // retranslateUi
 
 };
