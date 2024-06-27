@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include "dialog.h" // Include registration dialog header
 #include "login.h" // Assuming Dialog1 is your main application window/dialog after login
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

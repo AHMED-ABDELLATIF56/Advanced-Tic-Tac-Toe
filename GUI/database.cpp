@@ -1,4 +1,5 @@
 #include "database.h"
+#include <QDebug>
 
 Database::Database(const QString& usersFile, QObject *parent)
     : QObject(parent), usersFile(usersFile)

@@ -7,6 +7,7 @@
 #include "gamehistorydialog.h"
 #include "database.h"
 #include "mainwindow.h"
+#include <QDebug>
 
 Dialog1::Dialog1(QWidget *parent, QString username) :
     QDialog(parent),

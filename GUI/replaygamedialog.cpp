@@ -1,5 +1,6 @@
 #include "replaygamedialog.h"
 #include "ui_replaygamedialog.h"
+#include <QDebug>
 
 ReplayGameDialog::ReplayGameDialog(QWidget *parent) :
     QDialog(parent),

@@ -1,6 +1,7 @@
 #include "dialog.h"
 #include "ui_dialog.h"
 #include <QMessageBox>
+#include <QDebug>
 
 Dialog::Dialog(Database *db, QWidget *parent) :
     QDialog(parent),

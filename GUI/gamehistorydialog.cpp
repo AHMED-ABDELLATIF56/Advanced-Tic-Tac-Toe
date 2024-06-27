@@ -5,6 +5,7 @@
 #include <QTableWidgetItem>
 #include "database.h"
 #include <QStringList> // Include QStringList for split function
+#include <QDebug>
 
 GameHistoryDialog::GameHistoryDialog(QWidget *parent, QString username)
     : QDialog(parent)
