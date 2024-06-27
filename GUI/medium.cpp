@@ -68,7 +68,7 @@ void medium::handlePlayerMove(int index)
     button->setText("X"); // Set 'X' or 'O' based on player's turn
     board[index] = 'X'; // Update the board state
     playerX = !playerX; // Toggle player turn
-
+movesarranged+=QString::number(index);
     checkGameStatus(); // Check game status after each move
 
     // Check if the game is over
@@ -172,7 +172,7 @@ int medium::findBestMove()
 
     qint64 elapsed = timer.nsecsElapsed();
     qDebug() << "Finding best move took" << elapsed << "nanoseconds";
-
+movesarranged+=QString::number(index);
     return index;
 }
 
@@ -197,13 +197,10 @@ void medium::saveGameHistory(const QString& username)
     QElapsedTimer timer;
     timer.start();
 
-    std::vector<std::string> movesVector;
-    for (char cell : board) {
-        if (cell != ' ') {
-            movesVector.push_back(std::string(1, cell));
-        } else {
-            movesVector.push_back("-");
-        }
+    std::vector<std::string> moves;
+
+    for (const QString& move : movesarranged) {
+        moves.push_back(move.toStdString());
     }
 
     QString winner;
@@ -217,7 +214,7 @@ void medium::saveGameHistory(const QString& username)
 
     // Use username to save history in a user-specific way
     GameHistory gameHistory("game_history.txt");
-    gameHistory.saveGameHistory(username.toStdString(), "Computer_medium", winner.toStdString(), movesVector);
+    gameHistory.saveGameHistory(username.toStdString(), "Computer_medium", winner.toStdString(), moves);
 
     qint64 elapsed = timer.nsecsElapsed();
     qDebug() << "Saving game history took" << elapsed << "nanoseconds";

@@ -34,6 +34,7 @@ private:
     QVector<char> board;
     bool playerX;
      Database *database;
+     QString movesarranged;
 };
 
 #endif // MEDIUM_H

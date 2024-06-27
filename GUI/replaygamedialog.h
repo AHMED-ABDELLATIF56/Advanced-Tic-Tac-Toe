@@ -2,9 +2,9 @@
 #define REPLAYGAMEDIALOG_H
 
 #include <QDialog>
+#include <QLabel>
 #include <vector>
 #include <string>
-#include <QLabel>
 
 namespace Ui {
 class ReplayGameDialog;
@@ -17,12 +17,20 @@ class ReplayGameDialog : public QDialog
 public:
     explicit ReplayGameDialog(QWidget *parent = nullptr);
     ~ReplayGameDialog();
-
     void setGameMoves(const std::vector<std::string>& moves);
+
+private slots:
+    void on_pushButton_next_clicked();
+    void on_pushButton_previous_clicked();
 
 private:
     Ui::ReplayGameDialog *ui;
-    std::vector<QLabel*> boardLabels; // Vector to hold references to the QLabel objects
+    std::vector<QLabel*> boardLabels;
+    std::vector<std::string> moves;
+    int currentMoveIndex;
+    int nextButtonPressCount;
+    int previousButtonPressCount;
+    void updateBoard();
 };
 
 #endif // REPLAYGAMEDIALOG_H

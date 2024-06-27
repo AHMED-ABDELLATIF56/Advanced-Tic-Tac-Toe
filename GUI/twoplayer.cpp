@@ -54,7 +54,7 @@ void twoplayer::handlePlayerMove(int index)
     playerX = !playerX; // Toggle player turn
 
     checkGameStatus(); // Check game status after each move
-
+movesarranged+=QString::number(index);
     qint64 elapsed = timer.nsecsElapsed();
     qDebug() << "Player move took" << elapsed << "nanoseconds";
 }
@@ -147,13 +147,10 @@ void twoplayer::saveGameHistory(const QString& username)
     QElapsedTimer timer;
     timer.start();
 
-    std::vector<std::string> movesVector;
-    for (char cell : board) {
-        if (cell != ' ') {
-            movesVector.push_back(std::string(1, cell));
-        } else {
-            movesVector.push_back("-");
-        }
+    std::vector<std::string> moves;
+
+    for (const QString& move : movesarranged) {
+        moves.push_back(move.toStdString());
     }
 
     QString winner;
@@ -167,7 +164,7 @@ void twoplayer::saveGameHistory(const QString& username)
 
     // Use username to save history in a user-specific way
     GameHistory gameHistory("game_history.txt");
-    gameHistory.saveGameHistory(username.toStdString(), "user2", winner.toStdString(), movesVector);
+    gameHistory.saveGameHistory(username.toStdString(), "user2", winner.toStdString(), moves);
 
     qint64 elapsed = timer.nsecsElapsed();
     qDebug() << "Saving game history took" << elapsed << "nanoseconds";

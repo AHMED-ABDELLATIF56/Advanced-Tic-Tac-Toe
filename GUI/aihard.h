@@ -36,7 +36,7 @@ private:
     QVector<QPushButton*> pushButton_array;
     QVector<char> board;
     bool playerX;
-
+ QString movesarranged;
     void connectButtons();
     void disconnectButtons();
     Database *database;

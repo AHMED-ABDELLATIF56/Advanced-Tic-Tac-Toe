@@ -32,7 +32,7 @@ aihard::aihard(QWidget *parent, QString username)
     connectButtons(); // Connect button signals
 
     // Player always starts first
-    playerX = true;
+
 
     qint64 initTime = timer.nsecsElapsed();
     qDebug() << "AIHard initialization took" << initTime << "nanoseconds";
@@ -54,7 +54,7 @@ void aihard::handlePlayerMove(int index)
     button->setText("X"); // Set 'X' or 'O' based on player's turn
     board[index] = 'X'; // Update the board state
     playerX = !playerX; // Toggle player turn
-
+movesarranged+=QString::number(index);
     checkGameStatus(); // Check game status after each move
 
     // Check if the game is over
@@ -75,7 +75,6 @@ void aihard::aiMove()
     QPushButton* button = pushButton_array[bestMove];
     button->setText("O"); // Set 'X' or 'O' based on AI's turn
     board[bestMove] = 'O'; // Update the board state
-    playerX = !playerX; // Toggle player turn
 
     checkGameStatus(); // Check game status after AI's move
 
@@ -141,7 +140,7 @@ int aihard::findBestMove()
     do {
         index = rand() % 9; // Generate random index (0-8)
     } while (board[index] != ' '); // Keep generating if the cell is not empty
-
+    movesarranged+=QString::number(index);
     return index;
 }
 
@@ -186,13 +185,10 @@ void aihard::saveGameHistory(const QString& username)
     QElapsedTimer timer;
     timer.start();
 
-    std::vector<std::string> movesVector;
-    for (char cell : board) {
-        if (cell != ' ') {
-            movesVector.push_back(std::string(1, cell));
-        } else {
-            movesVector.push_back("-");
-        }
+    std::vector<std::string> moves;
+
+    for (const QString& move : movesarranged) {
+        moves.push_back(move.toStdString());
     }
 
     QString winner;
@@ -206,7 +202,7 @@ void aihard::saveGameHistory(const QString& username)
 
     // Use username to save history in a user-specific way
     GameHistory gameHistory("game_history.txt");
-    gameHistory.saveGameHistory(username.toStdString(), "Computer_easy", winner.toStdString(), movesVector);
+    gameHistory.saveGameHistory(username.toStdString(), "Computer_easy", winner.toStdString(), moves);
 
     qint64 elapsed = timer.nsecsElapsed();
     qDebug() << "Saving game history took" << elapsed << "nanoseconds";

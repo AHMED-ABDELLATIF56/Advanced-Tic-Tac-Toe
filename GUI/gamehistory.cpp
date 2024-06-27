@@ -79,14 +79,6 @@ std::vector<GameRecord> GameHistory::parseGameHistory() {
 
     file.close();
 
-  /*  // Debug: Print parsed data
-    for (const auto& record : gameRecords) {
-        qDebug() << "Parsed Record:" << QString::fromStdString(record.player1) << ","
-                 << QString::fromStdString(record.player2) << ","
-                 << QString::fromStdString(record.winner) << ", Moves:"
-                 << movesToString(record.moves);
-    }*/
-
     return gameRecords;
 }
 void GameHistory::viewGameHistory(const std::string& username)

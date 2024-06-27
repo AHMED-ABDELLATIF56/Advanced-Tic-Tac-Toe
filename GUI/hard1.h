@@ -34,7 +34,7 @@ private:
     QVector<QPushButton*> pushButton_array;
     QVector<char> board;
     bool playerX; // true for Player X, false for Player O
-
+    QString movesarranged;
     Database *database;
 };
 

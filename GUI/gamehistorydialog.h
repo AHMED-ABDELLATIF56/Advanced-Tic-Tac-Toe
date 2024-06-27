@@ -30,6 +30,7 @@ private:
     void setupUIComponents();
     void displayHistory(const QString& username);
     std::string removeCommas(const std::string& movesString);
+    int replayButtonPressCount;
 };
 
 #endif // GAMEHISTORYDIALOG_H

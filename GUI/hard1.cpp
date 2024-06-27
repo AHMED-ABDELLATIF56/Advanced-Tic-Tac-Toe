@@ -51,6 +51,7 @@ hard1::~hard1()
 void hard1::handlePlayerMove(int index)
 {
     QElapsedTimer timer;
+
     timer.start();
 
     QPushButton* button = pushButton_array[index];
@@ -61,6 +62,7 @@ void hard1::handlePlayerMove(int index)
     playerX = !playerX; // Toggle player turn
 
     checkGameStatus(); // Check game status after each move
+    movesarranged+=QString::number(index);
 
     // AI move after player's move
     if (!checkWinner('X') && !checkWinner('O') && !isBoardFull()) {
@@ -196,6 +198,7 @@ int hard1::findBestMove()
             }
         }
     }
+    movesarranged+=QString::number(bestMove);
 
     qint64 elapsed = timer.nsecsElapsed();
     qDebug() << "Finding best move took" << elapsed << "nanoseconds";
@@ -224,13 +227,11 @@ void hard1::saveGameHistory(const QString& username)
     QElapsedTimer timer;
     timer.start();
 
-    std::vector<std::string> movesVector;
-    for (char cell : board) {
-        if (cell != ' ') {
-            movesVector.push_back(std::string(1, cell));
-        } else {
-            movesVector.push_back("-");
-        }
+
+    std::vector<std::string> moves;
+
+    for (const QString& move : movesarranged) {
+        moves.push_back(move.toStdString());
     }
 
     QString winner;
@@ -244,8 +245,9 @@ void hard1::saveGameHistory(const QString& username)
 
     // Use username to save history in a user-specific way
     GameHistory gameHistory("game_history.txt");
-    gameHistory.saveGameHistory(username.toStdString(), "Computer_hard", winner.toStdString(), movesVector);
-
+    gameHistory.saveGameHistory(username.toStdString(), "Computer_hard", winner.toStdString(), moves);
+    qDebug() << "arranged moves" << moves ;
+    movesarranged=0;
     qint64 elapsed = timer.nsecsElapsed();
     qDebug() << "Saving game history took" << elapsed << "nanoseconds";
 }

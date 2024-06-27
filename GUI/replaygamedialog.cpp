@@ -1,9 +1,13 @@
 #include "replaygamedialog.h"
 #include "ui_replaygamedialog.h"
+#include <QDebug>
 
 ReplayGameDialog::ReplayGameDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::ReplayGameDialog)
+    ui(new Ui::ReplayGameDialog),
+    currentMoveIndex(0),
+    nextButtonPressCount(0),
+    previousButtonPressCount(0)
 {
     ui->setupUi(this);
 
@@ -19,10 +23,12 @@ ReplayGameDialog::ReplayGameDialog(QWidget *parent) :
         label->clear();
         label->setFixedSize(50, 50); // Set fixed size for labels
         label->setAlignment(Qt::AlignCenter); // Center-align text
-        // Styling for visibility
-        label->setStyleSheet("border: 1px solid black; font-size: 24px;");
-
+        label->setStyleSheet("border: 1px solid black; font-size: 24px;"); // Styling for visibility
     }
+
+    // Connect the buttons to their respective slots
+    connect(ui->pushButton_next, &QPushButton::clicked, this, &ReplayGameDialog::on_pushButton_next_clicked);
+    connect(ui->pushButton_previous, &QPushButton::clicked, this, &ReplayGameDialog::on_pushButton_previous_clicked);
 }
 
 ReplayGameDialog::~ReplayGameDialog()
@@ -30,34 +36,55 @@ ReplayGameDialog::~ReplayGameDialog()
     delete ui;
 }
 
-void ReplayGameDialog::setGameMoves(const std::vector<std::string>& moves)
+void ReplayGameDialog::setGameMoves(const std::vector<std::string>& gameMoves)
 {
-    qDebug() << "Setting game moves with size:" << moves.size();
+    moves = gameMoves;
+    currentMoveIndex = 0;
+    nextButtonPressCount = 0;
+    previousButtonPressCount = 0;
+    updateBoard();
+}
+
+void ReplayGameDialog::on_pushButton_next_clicked()
+{
+    nextButtonPressCount++;
+    if (nextButtonPressCount >= 2) {
+        nextButtonPressCount = 0;
+        if (currentMoveIndex < moves.size()) {
+            currentMoveIndex++;
+            updateBoard();
+        }
+    }
+}
+
+void ReplayGameDialog::on_pushButton_previous_clicked()
+{
+    previousButtonPressCount++;
+    if (previousButtonPressCount >= 2) {
+        previousButtonPressCount = 0;
+        if (currentMoveIndex > 0) {
+            currentMoveIndex--;
+            updateBoard();
+        }
+    }
+}
+
+void ReplayGameDialog::updateBoard()
+{
+
+    qDebug()<<"update function start";
+
+    int move[9];
 
     // Clear the board labels
     for (QLabel *label : boardLabels) {
         label->clear();
     }
 
-    // Display all moves on the board
-    for (int i = 0; i < moves.size(); ++i) {
-        if (i >= boardLabels.size()) {
-            qDebug() << "More moves than available labels. Cannot display all moves.";
-            break;
-        }
-
-        const std::string& move = moves[i];
-
-        if (move == "-") {
-            continue; // Skip empty moves or moves that are just "-"
-        }
-
-        char player = move[0]; // 'X' or 'O'
-
-        // Set text on the label corresponding to current move index
-        boardLabels[i]->setText(QString(player));
+    // Display moves up to the current index
+    for (int i = 0; i < currentMoveIndex; i++) {
+        move[i] = std::stoi(moves[i]); // Store the digit in the array and increment counter
+        char playerSymbol = (i % 2 == 0) ? 'X' : 'O';
+        boardLabels[move[i]]->setText(QString(playerSymbol));
     }
 }
-
-
-

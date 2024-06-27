@@ -37,6 +37,7 @@ private:
     void connectButtons();
     void disconnectButtons();
     void saveGameHistory(const QString& username);
+     QString movesarranged;
 
 };
 

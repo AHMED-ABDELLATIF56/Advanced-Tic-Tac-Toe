@@ -10,6 +10,7 @@ GameHistoryDialog::GameHistoryDialog(QWidget *parent, QString username)
     : QDialog(parent)
     , ui(new Ui::GameHistoryDialog)
     , username(username)
+    , replayButtonPressCount(0)
     , gameHistory(new GameHistory("game_history.txt"))
 {
     ui->setupUi(this);
@@ -95,36 +96,42 @@ QString GameHistoryDialog::movesToString(const std::vector<std::string>& moves) 
 
 void GameHistoryDialog::on_pushButton_replayGame_clicked()
 {
-    // Get the selected row
-    int selectedRow = ui->tableWidget_history->currentRow();
-    if (selectedRow < 0) {
-        QMessageBox::warning(this, "Replay Game", "Please select a game to replay.");
-        return;
+    replayButtonPressCount++;
+
+    if(replayButtonPressCount>=2){
+            replayButtonPressCount=0;
+        // Get the selected row
+        int selectedRow = ui->tableWidget_history->currentRow();
+        if (selectedRow < 0) {
+            QMessageBox::warning(this, "Replay Game", "Please select a game to replay.");
+            return;
+        }
+
+        // Get the moves from the selected row
+        QTableWidgetItem* itemMoves = ui->tableWidget_history->item(selectedRow, 3);
+        if (!itemMoves) {
+            qDebug() << "No moves found in the selected row";
+            return;
+        }
+
+        // Extract moves string from QTableWidgetItem
+        QString movesString = itemMoves->text();
+        qDebug() << "Moves String:" << movesString;
+
+        // Split movesString into individual moves based on commas
+        QStringList moveList = movesString.split(',');
+
+        // Convert QStringList to vector of std::string
+        std::vector<std::string> moves;
+        for (const QString& move : moveList) {
+            moves.push_back(move.toStdString());
+        }
+
+
+        // Open the replay game dialog with the selected moves
+        ReplayGameDialog replayDialog(this);
+        replayDialog.setGameMoves(moves); // Set game moves in the dialog
+        replayDialog.exec();
     }
-
-    // Get the moves from the selected row
-    QTableWidgetItem* itemMoves = ui->tableWidget_history->item(selectedRow, 3);
-    if (!itemMoves) {
-        qDebug() << "No moves found in the selected row";
-        return;
-    }
-
-    // Extract moves string from QTableWidgetItem
-    QString movesString = itemMoves->text();
-    qDebug() << "Moves String:" << movesString;
-
-    // Split movesString into individual moves based on commas
-    QStringList moveList = movesString.split(',');
-
-    // Convert QStringList to vector of std::string
-    std::vector<std::string> moves;
-    for (const QString& move : moveList) {
-        moves.push_back(move.toStdString());
-    }
-
-    // Open the replay game dialog with the selected moves
-    ReplayGameDialog replayDialog(this);
-    replayDialog.setGameMoves(moves); // Set game moves in the dialog
-    replayDialog.exec();
 }
 

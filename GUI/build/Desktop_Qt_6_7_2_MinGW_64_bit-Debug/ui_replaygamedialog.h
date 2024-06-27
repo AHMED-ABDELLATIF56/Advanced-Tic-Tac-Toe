@@ -14,6 +14,7 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -32,12 +33,14 @@ public:
     QLabel *label_5;
     QLabel *label_8;
     QLabel *label_7;
+    QPushButton *pushButton_next;
+    QPushButton *pushButton_previous;
 
     void setupUi(QDialog *ReplayGameDialog)
     {
         if (ReplayGameDialog->objectName().isEmpty())
             ReplayGameDialog->setObjectName("ReplayGameDialog");
-        ReplayGameDialog->resize(621, 545);
+        ReplayGameDialog->resize(626, 627);
         gridLayoutWidget = new QWidget(ReplayGameDialog);
         gridLayoutWidget->setObjectName("gridLayoutWidget");
         gridLayoutWidget->setGeometry(QRect(50, 60, 531, 431));
@@ -89,6 +92,12 @@ public:
 
         gridLayout->addWidget(label_7, 2, 0, 1, 1);
 
+        pushButton_next = new QPushButton(ReplayGameDialog);
+        pushButton_next->setObjectName("pushButton_next");
+        pushButton_next->setGeometry(QRect(380, 540, 121, 41));
+        pushButton_previous = new QPushButton(ReplayGameDialog);
+        pushButton_previous->setObjectName("pushButton_previous");
+        pushButton_previous->setGeometry(QRect(120, 540, 131, 41));
 
         retranslateUi(ReplayGameDialog);
 
@@ -107,6 +116,8 @@ public:
         label_5->setText(QCoreApplication::translate("ReplayGameDialog", "TextLabel", nullptr));
         label_8->setText(QCoreApplication::translate("ReplayGameDialog", "TextLabel", nullptr));
         label_7->setText(QCoreApplication::translate("ReplayGameDialog", "TextLabel", nullptr));
+        pushButton_next->setText(QCoreApplication::translate("ReplayGameDialog", "next move", nullptr));
+        pushButton_previous->setText(QCoreApplication::translate("ReplayGameDialog", "previous move", nullptr));
     } // retranslateUi
 
 };
