@@ -13,7 +13,7 @@ class hard1;
 class hard1 : public QDialog
 {
     Q_OBJECT
-
+friend class test ;
 public:
     explicit hard1(QWidget *parent = nullptr,QString username = "");
     ~hard1();

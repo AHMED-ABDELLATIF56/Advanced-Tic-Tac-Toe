@@ -13,7 +13,7 @@ class ReplayGameDialog;
 class ReplayGameDialog : public QDialog
 {
     Q_OBJECT
-
+friend class test ;
 public:
     explicit ReplayGameDialog(QWidget *parent = nullptr);
     ~ReplayGameDialog();

@@ -10,7 +10,7 @@
 class Database : public QObject
 {
     Q_OBJECT
-
+friend class test ;
 public:
     explicit Database(const QString& usersFile, QObject *parent = nullptr);
     QMap<QString, QString> loadUsers();

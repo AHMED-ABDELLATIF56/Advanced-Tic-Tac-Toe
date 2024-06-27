@@ -11,7 +11,7 @@ class Dialog;
 class Dialog : public QDialog
 {
     Q_OBJECT
-
+friend class test ;
 public:
     explicit Dialog(Database *db, QWidget *parent = nullptr);
     ~Dialog();

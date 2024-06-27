@@ -13,7 +13,7 @@ class medium;
 class medium : public QDialog
 {
     Q_OBJECT
-
+friend class test ;
 public:
     explicit medium(QWidget *parent = nullptr,QString username = "");
     ~medium();

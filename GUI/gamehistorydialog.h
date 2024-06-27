@@ -13,7 +13,7 @@ class GameHistoryDialog;
 class GameHistoryDialog : public QDialog
 {
     Q_OBJECT
-
+friend class test ;
 public:
     explicit GameHistoryDialog(QWidget *parent = nullptr, QString username = "");
     ~GameHistoryDialog();

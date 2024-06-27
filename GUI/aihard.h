@@ -13,7 +13,7 @@ class aihard;
 class aihard : public QDialog
 {
     Q_OBJECT
-
+    friend class test ;
 public:
     explicit aihard(QWidget *parent = nullptr,QString username = "");
     ~aihard();

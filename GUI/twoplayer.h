@@ -15,7 +15,7 @@ class twoplayer;
 class twoplayer : public QDialog
 {
     Q_OBJECT
-
+friend class test ;
 public:
     explicit twoplayer(QWidget *parent = nullptr,QString username = "");
     ~twoplayer();
