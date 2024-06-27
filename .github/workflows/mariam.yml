@@ -1,0 +1,47 @@
+name: Build Qt Project
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Qt Project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Qt
+        run: |
+          sudo apt-get update
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: '6.7.2'
+          modules: 'qtmultimedia'
+
+      - name: Add Qt to PATH
+        run: echo "$HOME/Qt/6.7.0/gcc_64/bin" >> $GITHUB_PATH
+
+      - name: Build project
+        run: |
+          mkdir build2
+          cd build2
+          qmake ../GUI/semi.pro
+          make
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y qtbase5-dev qt5-qmake xvfb
+
+      - name: Build and test 'MyQttest'
+        run: |
+          cd .github/GUI  # Adjust the path to your GUI folder
+          qmake Qttest.pro
+          make
+          xvfb-run --auto-servernum --server-args='-screen 0 1024x768x24' ./MyQttest
