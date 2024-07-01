@@ -1,8 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include <QMessageBox>
-#include "dialog.h" // Include registration dialog header
-#include "login.h" // Assuming Dialog1 is your main application window/dialog after login
+#include <QDebug> // Include for qDebug statements
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -10,8 +8,31 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // Set window title and icon
+    setWindowTitle("My Application");
+    setWindowIcon(QIcon(":/icons/app_icon.png"));
+
     // Initialize Database instance with the path to the users file
     database = new Database("users.txt", this);
+
+
+    // Set icons for buttons
+    ui->pushButton_1->setIcon(QIcon(":/new/prefix1/icons/login.png"));
+    ui->pushButton_4->setIcon(QIcon(":/new/prefix1/icons/register.png"));
+
+    // Apply stylesheets for buttons and line edits
+    ui->pushButton_1->setStyleSheet("QPushButton { background-color: #4CAF50; color: white; border-radius: 10px; }"
+                                    "QPushButton:hover { background-color: #45a049; }");
+
+    ui->pushButton_4->setStyleSheet("QPushButton { background-color: #008CBA; color: white; border-radius: 10px; }"
+                                    "QPushButton:hover { background-color: #0073aa; }");
+
+    ui->lineEdit_username->setStyleSheet("QLineEdit { border: 2px solid #4CAF50; border-radius: 5px; padding: 2px; }");
+
+    ui->lineEdit_password->setStyleSheet("QLineEdit { border: 2px solid #008CBA; border-radius: 5px; padding: 2px; }");
+
+    // Debugging output
+    qDebug() << "MainWindow initialized.";
 }
 
 MainWindow::~MainWindow()
@@ -54,6 +75,7 @@ void MainWindow::handleRegistrationSuccess()
     qDebug() << "Registration successful!";
     // Handle post-registration logic here if needed
 }
+
 QString MainWindow::getUsername() const
 {
     return ui->lineEdit_username->text();

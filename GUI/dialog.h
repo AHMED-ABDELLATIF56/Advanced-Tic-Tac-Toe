@@ -16,12 +16,12 @@ public:
     explicit Dialog(Database *db, QWidget *parent = nullptr);
     ~Dialog();
 
-signals:
-    void registrationSuccess();
-
 private slots:
     void onAcceptClicked();
     void onCancelClicked();
+
+signals:
+    void registrationSuccess();
 
 private:
     Ui::Dialog *ui;

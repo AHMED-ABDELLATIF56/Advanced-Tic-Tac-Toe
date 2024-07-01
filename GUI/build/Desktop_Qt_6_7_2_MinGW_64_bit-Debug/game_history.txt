@@ -25,3 +25,17 @@ ahmed:Computer_hard:Computer_hard:2,4,6,1,7,8,5,0,1,0,3,4,5,2,6,8
 ahmed:Computer_hard:Computer_hard:0,4,1,2,3,6
 ahmed:Computer_hard:Computer_hard:2,4,1,0,3,8
 ahmed:Computer_easy:Tie:1,3,6,7,5,0,4,2,8
+amr:user2:Tie:2,4,7,6,8,5,3,1
+amr:Computer_hard:Computer_hard:2,4,8,5,6,3
+gemy:Computer_medium:gemy:0,7,4,5,8
+gemy:Computer_hard:Tie:0,4,3,6,2,1,7,5
+gemy:Computer_hard:Computer_hard:8,0,1,3,6,4,5,8
+ahmed:Computer_hard:Computer_hard:2,4,1,0,3,8
+ahmed:Computer_easy:ahmed:2,8,4,3,5,7,6
+ahmed:Computer_medium:ahmed:2,0,4,3,6
+ahmed:Computer_medium:Computer_medium:2,0,4,3,6,0,6,4,5,3,7,1,2,8
+ahmed:Computer_easy:Tie:2,8,4,3,5,7,6,6,2,4,7,0,3,5,8,1
+abdallah:Computer_hard:Tie:2,4,3,0,8,5,6,7
+abdallah:Computer_easy:Computer_easy:2,4,5,3,7,0,6,8
+teffa:Computer_hard:Computer_hard:2,4,3,0,6,1,8,7
+teffa:user2:Tie:2,4,3,6,7,8,5,1

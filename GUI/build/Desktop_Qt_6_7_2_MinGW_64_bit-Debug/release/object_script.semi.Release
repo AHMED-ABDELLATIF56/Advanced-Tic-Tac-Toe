@@ -10,6 +10,7 @@ release/mainwindow.o
 release/medium.o
 release/replaygamedialog.o
 release/twoplayer.o
+release/qrc_resources.o
 release/moc_aihard.o
 release/moc_database.o
 release/moc_dialog.o

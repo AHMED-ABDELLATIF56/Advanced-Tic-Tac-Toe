@@ -52,3 +52,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     semi.pro.user
+
+RESOURCES += \
+    resources.qrc

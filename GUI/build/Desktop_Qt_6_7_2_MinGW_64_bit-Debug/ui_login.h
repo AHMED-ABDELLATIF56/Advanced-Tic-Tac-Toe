@@ -10,6 +10,7 @@
 #define UI_LOGIN_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
@@ -39,34 +40,41 @@ public:
     {
         if (Dialog1->objectName().isEmpty())
             Dialog1->setObjectName("Dialog1");
-        Dialog1->resize(898, 500);
+        Dialog1->resize(505, 452);
         label = new QLabel(Dialog1);
         label->setObjectName("label");
-        label->setGeometry(QRect(50, 80, 191, 20));
+        label->setGeometry(QRect(80, 110, 191, 20));
         layoutWidget = new QWidget(Dialog1);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(180, 40, 95, 103));
+        layoutWidget->setGeometry(QRect(200, 60, 111, 141));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         pushButton_AI_easy = new QPushButton(layoutWidget);
         pushButton_AI_easy->setObjectName("pushButton_AI_easy");
+        QIcon icon;
+        icon.addFile(QString::fromUtf8("icons/ai_easy_icon.jpg"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        pushButton_AI_easy->setIcon(icon);
 
         verticalLayout->addWidget(pushButton_AI_easy);
 
         pushButton_AI_medium = new QPushButton(layoutWidget);
         pushButton_AI_medium->setObjectName("pushButton_AI_medium");
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/new/prefix1/icons/ai_easy_icon.jpg"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        pushButton_AI_medium->setIcon(icon1);
 
         verticalLayout->addWidget(pushButton_AI_medium);
 
         pushButton_AI_hard = new QPushButton(layoutWidget);
         pushButton_AI_hard->setObjectName("pushButton_AI_hard");
+        pushButton_AI_hard->setIcon(icon1);
 
         verticalLayout->addWidget(pushButton_AI_hard);
 
         layoutWidget1 = new QWidget(Dialog1);
         layoutWidget1->setObjectName("layoutWidget1");
-        layoutWidget1->setGeometry(QRect(40, 170, 311, 31));
+        layoutWidget1->setGeometry(QRect(70, 260, 261, 41));
         horizontalLayout = new QHBoxLayout(layoutWidget1);
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -77,12 +85,18 @@ public:
 
         pushButton_two_player = new QPushButton(layoutWidget1);
         pushButton_two_player->setObjectName("pushButton_two_player");
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/new/prefix1/icons/two_player_icon.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        pushButton_two_player->setIcon(icon2);
 
         horizontalLayout->addWidget(pushButton_two_player);
 
         pushButton_history = new QPushButton(Dialog1);
         pushButton_history->setObjectName("pushButton_history");
-        pushButton_history->setGeometry(QRect(150, 240, 93, 29));
+        pushButton_history->setGeometry(QRect(180, 340, 131, 51));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/new/prefix1/icons/history_icon.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        pushButton_history->setIcon(icon3);
 
         retranslateUi(Dialog1);
 
@@ -92,10 +106,10 @@ public:
     void retranslateUi(QDialog *Dialog1)
     {
         Dialog1->setWindowTitle(QCoreApplication::translate("Dialog1", "Choose mode", nullptr));
-        label->setText(QCoreApplication::translate("Dialog1", "Against AI", nullptr));
-        pushButton_AI_easy->setText(QCoreApplication::translate("Dialog1", "easy", nullptr));
-        pushButton_AI_medium->setText(QCoreApplication::translate("Dialog1", "medium", nullptr));
-        pushButton_AI_hard->setText(QCoreApplication::translate("Dialog1", "hard", nullptr));
+        label->setText(QCoreApplication::translate("Dialog1", "Play against AI", nullptr));
+        pushButton_AI_easy->setText(QCoreApplication::translate("Dialog1", "Easy", nullptr));
+        pushButton_AI_medium->setText(QCoreApplication::translate("Dialog1", "Medium", nullptr));
+        pushButton_AI_hard->setText(QCoreApplication::translate("Dialog1", "Hard", nullptr));
         label_2->setText(QCoreApplication::translate("Dialog1", "Two players", nullptr));
         pushButton_two_player->setText(QCoreApplication::translate("Dialog1", "click", nullptr));
         pushButton_history->setText(QCoreApplication::translate("Dialog1", "view history", nullptr));

@@ -10,6 +10,7 @@
 #define UI_DIALOG_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QLabel>
@@ -32,25 +33,28 @@ public:
     {
         if (Dialog->objectName().isEmpty())
             Dialog->setObjectName("Dialog");
-        Dialog->resize(947, 409);
+        Dialog->resize(606, 474);
         lineEdit_username = new QLineEdit(Dialog);
         lineEdit_username->setObjectName("lineEdit_username");
-        lineEdit_username->setGeometry(QRect(260, 90, 191, 28));
+        lineEdit_username->setGeometry(QRect(210, 90, 191, 28));
         lineEdit_password = new QLineEdit(Dialog);
         lineEdit_password->setObjectName("lineEdit_password");
-        lineEdit_password->setGeometry(QRect(260, 150, 191, 28));
+        lineEdit_password->setGeometry(QRect(210, 150, 191, 28));
         pushButton_accept = new QPushButton(Dialog);
         pushButton_accept->setObjectName("pushButton_accept");
-        pushButton_accept->setGeometry(QRect(310, 220, 83, 29));
+        pushButton_accept->setGeometry(QRect(260, 220, 101, 41));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/new/prefix1/icons/register.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        pushButton_accept->setIcon(icon);
         label = new QLabel(Dialog);
         label->setObjectName("label");
-        label->setGeometry(QRect(150, 90, 81, 20));
+        label->setGeometry(QRect(100, 90, 81, 20));
         label_2 = new QLabel(Dialog);
         label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(150, 150, 81, 20));
+        label_2->setGeometry(QRect(100, 150, 81, 20));
         pushButton_cancel = new QPushButton(Dialog);
         pushButton_cancel->setObjectName("pushButton_cancel");
-        pushButton_cancel->setGeometry(QRect(310, 350, 83, 29));
+        pushButton_cancel->setGeometry(QRect(260, 350, 101, 41));
 
         retranslateUi(Dialog);
 

@@ -10,6 +10,7 @@ debug/mainwindow.o
 debug/medium.o
 debug/replaygamedialog.o
 debug/twoplayer.o
+debug/qrc_resources.o
 debug/moc_aihard.o
 debug/moc_database.o
 debug/moc_dialog.o

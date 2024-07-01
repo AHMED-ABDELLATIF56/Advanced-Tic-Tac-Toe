@@ -35,6 +35,7 @@ hard1::hard1(QWidget *parent, QString username) :
         connect(pushButton_array[i], &QPushButton::clicked, [this, i]() {
             handlePlayerMove(i);
         });
+        pushButton_array[i]->setStyleSheet("font-size: 24px; border: 1px solid black;");
     }
 
     resetGame(); // Initialize/reset game state
@@ -58,11 +59,12 @@ void hard1::handlePlayerMove(int index)
     if (!button->text().isEmpty()) return; // If the button already has text, do nothing
 
     button->setText("X"); // Set 'X' or 'O' based on player's turn
+    button->setStyleSheet("color: blue; font-size: 24px; border: 1px solid black;"); // Set color to blue for player
     board[index] = 'X'; // Update the board state
     playerX = !playerX; // Toggle player turn
 
     checkGameStatus(); // Check game status after each move
-    movesarranged+=QString::number(index);
+    movesarranged += QString::number(index);
 
     // AI move after player's move
     if (!checkWinner('X') && !checkWinner('O') && !isBoardFull()) {
@@ -81,6 +83,7 @@ void hard1::aiMove()
     int bestMove = findBestMove(); // Determine AI's move
     QPushButton* button = pushButton_array[bestMove];
     button->setText("O"); // Set 'X' or 'O' based on AI's turn
+    button->setStyleSheet("color: red; font-size: 24px; border: 1px solid black;"); // Set color to red for AI
     board[bestMove] = 'O'; // Update the board state
     playerX = !playerX; // Toggle player turn
 
@@ -198,7 +201,7 @@ int hard1::findBestMove()
             }
         }
     }
-    movesarranged+=QString::number(bestMove);
+    movesarranged += QString::number(bestMove);
 
     qint64 elapsed = timer.nsecsElapsed();
     qDebug() << "Finding best move took" << elapsed << "nanoseconds";
@@ -213,7 +216,8 @@ void hard1::resetGame()
 
     // Clear all buttons and reset board and player turn
     for (int i = 0; i < 9; ++i) {
-        pushButton_array[i]->setText(""); // Clear text on button
+        pushButton_array[i]->setText(""); // Clear text
+        pushButton_array[i]->setStyleSheet("font-size: 24px; border: 1px solid black;"); // Reset button style
         board[i] = ' '; // Reset board state
     }
     playerX = true; // Assuming X starts first
@@ -227,12 +231,12 @@ void hard1::saveGameHistory(const QString& username)
     QElapsedTimer timer;
     timer.start();
 
-
     std::vector<std::string> moves;
 
     for (const QString& move : movesarranged) {
         moves.push_back(move.toStdString());
     }
+
 
     QString winner;
     if (checkWinner('X')) {
@@ -246,8 +250,7 @@ void hard1::saveGameHistory(const QString& username)
     // Use username to save history in a user-specific way
     GameHistory gameHistory("game_history.txt");
     gameHistory.saveGameHistory(username.toStdString(), "Computer_hard", winner.toStdString(), moves);
-    qDebug() << "arranged moves" << moves ;
-    movesarranged=0;
+
     qint64 elapsed = timer.nsecsElapsed();
     qDebug() << "Saving game history took" << elapsed << "nanoseconds";
 }

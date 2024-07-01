@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>icons/login.png</file>
+        <file>icons/logo.png</file>
+        <file>icons/register.png</file>
+        <file>icons/two_player_icon.png</file>
+        <file>icons/ai_easy_icon.jpg</file>
+        <file>icons/history_icon.png</file>
+    </qresource>
+</RCC>

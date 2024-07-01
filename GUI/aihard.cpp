@@ -29,6 +29,14 @@ aihard::aihard(QWidget *parent, QString username)
     board = QVector<char>(9, ' ');
 
     // Connect all buttons to handlePlayerMove slot
+    for (int i = 0; i < 9; ++i) {
+        connect(pushButton_array[i], &QPushButton::clicked, [this, i]() {
+            handlePlayerMove(i);
+        });
+        pushButton_array[i]->setStyleSheet("font-size: 24px; border: 1px solid black;");
+    }
+
+    // Connect all buttons to handlePlayerMove slot
     connectButtons(); // Connect button signals
 
     // Player always starts first
@@ -52,6 +60,7 @@ void aihard::handlePlayerMove(int index)
     if (!button->text().isEmpty()) return; // If the button already has text, do nothing
 
     button->setText("X"); // Set 'X' or 'O' based on player's turn
+    button->setStyleSheet("color: blue; font-size: 24px; border: 1px solid black;"); // Set color to blue for player
     board[index] = 'X'; // Update the board state
     playerX = !playerX; // Toggle player turn
 movesarranged+=QString::number(index);
@@ -74,6 +83,7 @@ void aihard::aiMove()
     int bestMove = findBestMove(); // Determine AI's move
     QPushButton* button = pushButton_array[bestMove];
     button->setText("O"); // Set 'X' or 'O' based on AI's turn
+    button->setStyleSheet("color: red; font-size: 24px; border: 1px solid black;"); // Set color to red for AI
     board[bestMove] = 'O'; // Update the board state
 
     checkGameStatus(); // Check game status after AI's move

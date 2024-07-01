@@ -1,9 +1,7 @@
-// gamehistorydialog.h
 #ifndef GAMEHISTORYDIALOG_H
 #define GAMEHISTORYDIALOG_H
 
 #include <QDialog>
-#include <QString>
 #include "database.h"
 
 namespace Ui {
@@ -25,12 +23,12 @@ private slots:
 private:
     Ui::GameHistoryDialog *ui;
     QString username;
+    int replayButtonPressCount;
     GameHistory *gameHistory;
-    QString movesToString(const std::vector<std::string>& moves);
+
     void setupUIComponents();
     void displayHistory(const QString& username);
-    std::string removeCommas(const std::string& movesString);
-    int replayButtonPressCount;
+    QString movesToString(const std::vector<std::string>& moves);
 };
 
 #endif // GAMEHISTORYDIALOG_H

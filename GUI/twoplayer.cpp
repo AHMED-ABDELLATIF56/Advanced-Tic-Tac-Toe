@@ -25,6 +25,13 @@ twoplayer::twoplayer(QWidget *parent, QString username) :
 
     // Initialize board with empty spaces
     board = QVector<char>(9, ' ');
+    // Connect all buttons to handlePlayerMove slot
+    for (int i = 0; i < 9; ++i) {
+        connect(pushButton_array[i], &QPushButton::clicked, [this, i]() {
+            handlePlayerMove(i);
+        });
+        pushButton_array[i]->setStyleSheet("font-size: 24px; border: 1px solid black;");
+    }
 
     // Connect all buttons to handlePlayerMove slot
     connectButtons();
@@ -52,7 +59,8 @@ void twoplayer::handlePlayerMove(int index)
     button->setText(playerX ? "X" : "O"); // Set 'X' or 'O' based on player's turn
     board[index] = playerX ? 'X' : 'O'; // Update the board state
     playerX = !playerX; // Toggle player turn
-
+    button->setStyleSheet(playerX ? "color: blue; font-size: 24px; border: 1px solid black;":
+                         "color: red; font-size: 24px; border: 1px solid black;" ); // Set color to blue for player
     checkGameStatus(); // Check game status after each move
 movesarranged+=QString::number(index);
     qint64 elapsed = timer.nsecsElapsed();

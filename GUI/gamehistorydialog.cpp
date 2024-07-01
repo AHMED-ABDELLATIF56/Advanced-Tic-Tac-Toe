@@ -4,7 +4,7 @@
 #include <QMessageBox>
 #include <QTableWidgetItem>
 #include "database.h"
-#include <QStringList> // Include QStringList for split function
+#include <QStringList>
 
 GameHistoryDialog::GameHistoryDialog(QWidget *parent, QString username)
     : QDialog(parent)
@@ -32,6 +32,23 @@ void GameHistoryDialog::setupUIComponents()
     ui->tableWidget_history->setColumnCount(4); // Assuming 4 columns: Player 1, Player 2, Winner, Moves
     QStringList headers = {"Player 1", "Player 2", "Winner", "Moves"};
     ui->tableWidget_history->setHorizontalHeaderLabels(headers);
+
+    // Set stylesheets for table and buttons
+    ui->tableWidget_history->setStyleSheet("QTableWidget { background-color: #F5F5F5; border: 1px solid #DDDDDD; }"
+                                           "QHeaderView::section { background-color: #E0E0E0; border: 1px solid #CCCCCC; padding: 4px; }"
+                                           "QTableWidget::item { padding: 4px; }");
+
+    ui->pushButton_replayGame->setStyleSheet("QPushButton { background-color: #4CAF50; color: white; border-radius: 10px; padding: 10px; }"
+                                             "QPushButton:hover { background-color: #45a049; }");
+
+
+    // Set icon for buttons
+    QIcon replayIcon(":/icons/replay_icon.png");
+    QIcon viewHistoryIcon(":/icons/view_history_icon.png");
+
+    ui->pushButton_replayGame->setIcon(replayIcon);
+    ui->pushButton_replayGame->setIconSize(QSize(24, 24));
+
 }
 
 void GameHistoryDialog::displayHistory(const QString& username) {
@@ -99,7 +116,7 @@ void GameHistoryDialog::on_pushButton_replayGame_clicked()
     replayButtonPressCount++;
 
     if(replayButtonPressCount>=2){
-            replayButtonPressCount=0;
+        replayButtonPressCount=0;
         // Get the selected row
         int selectedRow = ui->tableWidget_history->currentRow();
         if (selectedRow < 0) {
@@ -127,11 +144,9 @@ void GameHistoryDialog::on_pushButton_replayGame_clicked()
             moves.push_back(move.toStdString());
         }
 
-
         // Open the replay game dialog with the selected moves
         ReplayGameDialog replayDialog(this);
         replayDialog.setGameMoves(moves); // Set game moves in the dialog
         replayDialog.exec();
     }
 }
-
